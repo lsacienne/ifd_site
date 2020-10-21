@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<?php
+  session_start();
+  if(isset($_SESSION['login']) && $_SESSION['login'] == true){
+    header('location: home.php');
+  }
+?>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Login</title>
   </head>
   <body>
     <form method="post" action="check_login.php">
