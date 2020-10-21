@@ -5,20 +5,6 @@
       <title>Homepage</title>
     </head>
     <body>
-      a
-      a
-      a
-      a
-      a
-
-
-
-
-
-
-
-
-
       <?php
         session_start();
         if($_SESSION['login']){

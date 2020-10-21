@@ -11,6 +11,12 @@
     <title>Login</title>
   </head>
   <body>
+    <h1>Bienvenue sur UnTrollBienMécontent.fr</h1>
+    <p>
+      Discutez de vos jeux favoris, avec une communauté active et sympathique !
+    </p>
+    <br/>
+
     <form method="post" action="check_login.php">
       <label for="uname">Username:</label>
       <input type="text" name="uname" placeholder="Username" required><br/>
@@ -23,8 +29,9 @@
     </form>
     <?php
       if(isset($_GET['failed'])){
-        echo("<br/>Connection failed, please try again :(");
+        echo("<br/>Connection failed, please try again :(<br/>");
       }
      ?>
+    <p>Pas encore memebre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>
   </body>
 </html>
