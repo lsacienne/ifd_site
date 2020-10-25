@@ -5,7 +5,8 @@
       <title>Homepage</title>
     </head>
     <body>
-      <?php
+      <p>
+        <?php
         session_start();
         if($_SESSION['login']){
           echo "Bienvenue, ",$_SESSION['uname'];
@@ -13,6 +14,7 @@
           header('location: login.php');
        }
       ?>
+      </p>
     </body>
     <form action="logout.php">
       <input type="submit" value="Logout"/>
