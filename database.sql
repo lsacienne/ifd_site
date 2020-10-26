@@ -28,13 +28,13 @@ CREATE TABLE jeux(
 
 CREATE TABLE categorie(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nom_categorie VARCHAR(255),
+	nom_categorie VARCHAR(255)
 );
 
 
 CREATE TABLE link_categorie_jeux(
-	id_categorie INT
-	id_jeux INT
+	id_categorie INT,
+	id_jeux INT,
 
 	FOREIGN KEY (id_categorie) REFERENCES categorie(id),
 	FOREIGN KEY (id_jeux) REFERENCES jeux(id)
