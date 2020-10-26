@@ -31,6 +31,9 @@
       if(isset($_GET['failed'])){
         echo("<br/>Connection failed, please try again :(<br/>");
       }
+      if(isset($_GET['success'])){
+        echo("<br/>Account created succesfully, please log in :)<br/>");
+      }
      ?>
     <p>Pas encore memebre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>
   </body>

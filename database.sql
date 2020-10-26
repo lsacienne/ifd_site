@@ -10,7 +10,6 @@ CREATE TABLE utilisateur(
 	bio VARCHAR(5000),
 	date_de_naissance DATE,
 	date_de_creation DATE DEFAULT NOW(),
-	adresse VARCHAR(255),
 	email VARCHAR(255)
 );
 
