@@ -1,26 +1,22 @@
 body {
-    font-family: 'Segoe UI';
+    font-family: "Segoe UI", serif;
     font-size: 1.5em;
-
+    padding: 1em;
 
 }
 
 p {
     text-align: justify;
     text-justify: inter-word;
-    margin: 5%;
-    margin-top: 0%;
-    margin-bottom: 0%;
-    line-height: 1.5em;
+    margin:auto;
+    line-height: 1em;
 
 }
 
 h1 {
     /* Sous titre pour des rubriques */
-    background-color : Black;
-    color: #D0D0D0;
-    margin-top: 5%;
-    font-size: 2em;
+    color:whitesmoke;
+    font-size: 1em;
 }
 
 h2 {
@@ -29,7 +25,7 @@ h2 {
     font-size: 1em;
     margin: 5%;
     text-align: center;
-    text-justify: inter-world;
+    text-justify:inter-word;
 }
 
 h3 {
@@ -37,8 +33,8 @@ h3 {
     text-decoration: underline;
     text-align: left;
     margin: 5%;
-    margin-top: 0%;
-    margin-bottom: 0%;
+    margin-top: 0;
+    margin-bottom: 0;
     line-height: 1.5em;
 }
 
@@ -57,17 +53,6 @@ h5 {
     margin-right: 0;
 }
 
-h6 {
-    /* sous titre de l'en-tête */
-    font-size: 1.5em;
-    color: white;
-    font-style: italic;
-    position: absolute;
-    left: 60%;
-    top: -37%;
-
-}
-
 mark {
     /* surligner un truc*/
     color: white;
@@ -75,7 +60,16 @@ mark {
 
 }
 
-/* classe */
+input[type=text],input[type=password] {
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+    font-size:0.8em;
+}
+
+
+/*********** classe ************/
+
+
+/* background des pages "classiques" du site */
 .cover {
     background-size: cover;
     background-image: linear-gradient(to bottom, #de7c12, #e6922c, #eea644, #f7bb5b, #ffcf74);
@@ -85,6 +79,41 @@ mark {
     width: 100%;
     height: 350%;
 }
+
+/* background des pages de login et de register du site */
+.clogin {
+    background-image: url(arts/structure_site/tile_background_login.png);
+    background-repeat: repeat;
+    position: absolute;
+}
+
+
+/* boîte pouvant contenir du texte qu'on utilise pour le login et le register */
+.text_box {
+    margin:auto;
+    margin-left:19em;
+    margin-top: 10em;
+    padding:0.5em;
+    background: rgba(0,0,0,0.80);
+    border-top-left-radius: 1em 1em;
+    border-top-right-radius: 1em 1em;
+    border-bottom-right-radius: 1em 1em;
+    border-bottom-left-radius: 1em 1em;
+}
+
+/* liseraie entourant la boîte de texte ci-dessus */
+.line {
+    margin:auto;
+    padding: 0.5em;
+    border-width:0.4em;
+    border-color:white;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
 /* centrer l'image */
 .img {
     text-align: center;
@@ -97,14 +126,33 @@ mark {
     background-color: rgba(255,255,255,0.5);
     background-clip : content-box;
 }
-.bouton5 {
-    border-radius:12px 0 12px 0;
-    background: #d34836;
+
+.bouton_log_sign {
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+    background-color:#0026FF;
+    color:white;
+    padding: 0.1em 1em 0.1em 1em;
     border:none;
-    color:#fff;
-    font:bold 12px Verdana;
-    padding:6px 0 6px 0;
+    font-size:0.8em;
 }
+/* simple exemple tiré d'ici :http://41mag.fr/18-exemples-de-bouton-en-css-3-inspire-par-google.html */
+.bouton5 {
+    border-radius: 12px 0 12px 0;
+    background: #d34836;
+    border: none;
+    color: #fff;
+    font: bold 12px Verdana;
+    padding: 6px 0 6px 0;
+}
+
+.white_text {
+    color:white;
+}
+
+.black_text {
+    color:black;
+}
+
 /*entête à mettre à chaque début de body*/
 #entete {
     position: absolute;
@@ -114,7 +162,6 @@ mark {
     height: 4.5em;
     background-color: rgba(255,255,255,0.5);
     background-clip : content-box;
-    background-image: url(img/nuit.png);
 }
 
 /* le menu */
