@@ -19,7 +19,7 @@ CREATE TABLE jeux(
 	nom VARCHAR(255),
 	editeur VARCHAR(255),
 	prix FLOAT,
-	categorie VARCHAR(255),
+	id_categorie INT,
 	note_moyenne FLOAT,
 	description VARCHAR(5000)
 );

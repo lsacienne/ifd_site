@@ -8,8 +8,8 @@
     $line = $req->fetch();
   }
   if($line){
+    $_SESSION['id'] = $line['id'];
     $_SESSION['uname'] = $_POST['uname'];
-    $_SESSION['pwd'] = $_POST['pwd'];
     $_SESSION['login'] = true;
     header("location: home.php");
   }else{

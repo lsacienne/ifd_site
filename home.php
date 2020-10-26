@@ -6,17 +6,9 @@
     </head>
     <body>
       <p>
-        <?php
-        session_start();
-        if($_SESSION['login']){
-          echo "Bienvenue, ",$_SESSION['uname'];
-        }else{
-          header('location: login.php');
-       }
+      <?php
+        include 'header.php';
       ?>
       </p>
     </body>
-    <form action="logout.php">
-      <input type="submit" value="Logout"/>
-    </form>
 </html>
