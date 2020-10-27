@@ -39,7 +39,8 @@
       for ($i = 1; $i <= 10; $i++) {
       ?>
       <option value="<?=$i?>"><?=$i?></option>
-      <?php}?>
+      <?php
+      }?>
       </select><br/><br/>
 
 
