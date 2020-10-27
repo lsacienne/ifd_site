@@ -36,7 +36,7 @@
       <label for="note">Note:</label>
       <select id="note" name="note">
       <?php
-      for ($i = 1; $i <= 10; $i++) {
+      for ($i = 0; $i <= 10; $i++) {
       ?>
       <option value="<?=$i?>"><?=$i?></option>
       <?php
