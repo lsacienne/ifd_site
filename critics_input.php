@@ -5,6 +5,9 @@
     <title>Critiques</title>
   </head>
   <body>
+    <?php
+      include 'header.php';
+    ?>
     <h1>Saisir critique</h1><br/>
     <form method="post" action="add_critic.php">
 

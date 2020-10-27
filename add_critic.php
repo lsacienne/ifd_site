@@ -1,24 +1,24 @@
 <?php
 
   include 'header.php';
-  $idu = $_GET['id'];
+  $idu = $_GET['id'];//chnage for session
 
   $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
   $namej = $_POST['jeux'];
 
   $req = $db->prepare("SELECT id FROM jeux WHERE nom = '$namej';");
   $req->execute();
-  $idj = $req->fetch();
+  $idj = $req->fetch();//$idj['id']
 
   $req1 = $db->prepare("SELECT nom,note,content FROM critiques;");
   $req1->execute();
   $line = $req1->fetch();
   while(($line['titre']!=$_POST['titre'] && $line['note']!=$_POST['note'] && $line['content']!=$_POST['content']) && $line){
-    $line = $req1->fetch();
+    $line = $req1->fetch();//vérif utilisateur
   }
 
   if($line){
-    header("location: critics_input.php?failed");
+    header("location: critics_input.php?failed");//$_GET['failed']
   }else{
     $name = $_POST['titre'];
     $note = $_POST['note'];
