@@ -6,7 +6,7 @@
   $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
   $idj = $_POST['jeux'];
 
-  $req1 = $db->prepare("SELECT id_utilisateur FROM critiques;");
+  $req1 = $db->prepare("SELECT id_utilisateur FROM critiques WHERE id_jeu = '$idj';");
   $req1->execute();
   $line = $req1->fetch();
 
