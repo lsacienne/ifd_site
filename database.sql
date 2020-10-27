@@ -5,6 +5,7 @@ USE projetIFD;
 CREATE TABLE utilisateur(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	pseudo VARCHAR(255),
+	mdp VARCHAR(255),
 	nom VARCHAR(255),
 	prenom VARCHAR(255),
 	bio VARCHAR(5000),
@@ -20,7 +21,6 @@ CREATE TABLE jeux(
 	editeur VARCHAR(255),
 	prix FLOAT,
 	id_categorie INT,
-	note_moyenne FLOAT,
 	description VARCHAR(5000)
 );
 
@@ -44,6 +44,7 @@ CREATE TABLE critiques(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	id_utilisateur INT,
 	id_jeu INT,
+	nom VARCHAR(255),
 	note INT,
 	content VARCHAR(5000),
 	date_crit DATE DEFAULT NOW(),
@@ -68,12 +69,9 @@ CREATE TABLE reponses(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	content VARCHAR(5000),
 	id_auteur INT,
-	id_reponse INT,
+	id_reponse INT NULL,
 	id_critiques INT,
-	up INT,
-	down INT,
 
 	FOREIGN KEY (id_reponse) REFERENCES reponses(id),
 	FOREIGN KEY (id_critiques) REFERENCES critiques(id),
-	FOREIGN KEY (id_reponse) REFERENCES reponses(id)
 )
