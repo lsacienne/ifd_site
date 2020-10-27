@@ -28,6 +28,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
         <button type="submit" class="bouton_log_sign">Login</button>
 
     </form>
+    <div class="white_text">
     <?php
     if(isset($_GET['failed'])){
         echo("<br/>Connection failed, please try again :(<br/>");
@@ -36,7 +37,9 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
         echo("<br/>Account created succesfully, please log in :)<br/>");
     }
     ?>
+    </div>
     <p class="white_text"><br>Pas encore membre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>
+
   </div>
   </body>
 </html>
