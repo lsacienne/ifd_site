@@ -1,19 +1,22 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="style_site.css">
+<html lang="en" dir="ltr" class="clogin">
 <?php
   session_start();
   if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     header('location: home.php');
   }
 ?>
-<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Inscription</title>
   </head>
-  <body>
+  <body class="text_box">
+  <div class="line">
     <h1>Inscription au site </h1>
-    <p>Entre tes informations ci dessous<p/><br/>
-    <form method="post" action="add_account.php">
+
+    <p class="white_text">Entre tes informations ci dessous<p/><br/>
+    <form class="white_text" method="post" action="add_account.php">
 	    <label for="lastname">Nom:</label>
 	    <input name="lastname" type="text" required/> <br /><br />
 
@@ -37,6 +40,7 @@
 
       <button type="submit">Create account</button>
     </form>
+  </div>
     <?php
       if(isset($_GET['failed'])){
         echo("<br/>La création du compte a échoué :( essayez un autre pseudo/adresse email<br/>");
