@@ -49,5 +49,10 @@
 
       <button type="submit">Poster</button>
     </form>
+    <?php
+      if(isset($_GET['failed'])){
+        echo("<br/>L'envoie à échoué. Réessayez !<br/>");
+      }
+    ?>
   </body>
 </html>
