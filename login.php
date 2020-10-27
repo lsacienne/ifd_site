@@ -32,9 +32,12 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     if(isset($_GET['failed'])){
         echo("<br/>Connection failed, please try again :(<br/>");
     }
+    if(isset($_GET['success'])){
+        echo("<br/>Account created succesfully, please log in :)<br/>");
+    }
     ?>
-
     <p class="white_text"><br>Pas encore membre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>
-</div>
-</body>
+  </div>
+  </body>
 </html>
+
