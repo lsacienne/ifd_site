@@ -7,6 +7,7 @@
   <body>
     <?php
       include 'header.php';
+      include 'print_comment.php';
       if(!(isset($_GET['id']))){
         echo("<br/>La page n'existe pas, désolé");
       }else{
@@ -43,14 +44,9 @@
             $textMinus="<mark>-</mark>";
           }
         }
-        echo '<a href = "update_votes.php?value=1&id='.$id.'">'.$textPlus.'<a/> / <a href = "update_votes.php?value=0&id='.$id.'">0<a/> / <a href = "update_votes.php?value=-1&id='.$id.'">'.$textMinus.'<a/>';
-
-
-
-
-
-
-
+        echo '<a href = "update_votes.php?value=1&id='.$id.'">'.$textPlus.'<a/> / <a href = "update_votes.php?value=0&id='.$id.'">0<a/> / <a href = "update_votes.php?value=-1&id='.$id.'">'.$textMinus.'<a/></h3>';
+        echo '<h3><b>Commentaires:</b></h3>';
+        printComs($id,NULL,0,$db);
       }
     ?>
   </body>

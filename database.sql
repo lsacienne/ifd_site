@@ -66,7 +66,7 @@ CREATE TABLE reponses(
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	content VARCHAR(5000),
 	id_auteur INT,
-	id_reponse INT DEFAULT NULL,
+	id_reponse INT DEFAULT 0,
 	id_critiques INT,
 
 	FOREIGN KEY (id_reponse) REFERENCES reponses(id),
