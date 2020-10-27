@@ -13,15 +13,35 @@
 
       <label for="jeux">Jeux:</label>
       <select id="jeux" name="jeux">
-          <option value="Uno">Uno</Fr></option>
-          <option value="Munchkin">Munchkin</option>
-      </select><br/><br/>
+      <?php
+        $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
+        $req = $db->prepare("SELECT nom,id FROM jeux;");
+        $req->execute();
+        $line = $req->fetch();
+
+        while($line){
+
+        ?>
+        <option value="<?php echo $line['id']; ?>"> <?php echo $line['nom']; ?></option>
+        <?php
+          $line = $req->fetch();
+        }
+        ?>
+        </select><br/><br/>
 
 	    <label for="titre">Titre:</label>
 	    <input name="titre" type="text" required/> <br /><br />
 
-	    <label for="note">Note (/10):</label>
-	    <input name="note" type="text" required/> <br /><br />
+
+      <label for="note">Note:</label>
+      <select id="note" name="note">
+      <?php
+      for ($i = 1; $i <= 10; $i++) {
+      ?>
+      <option value="<?=$i?>"><?=$i?></option>
+      <?php}?>
+      </select><br/><br/>
+
 
       <label for="content">Avis:</label><br /><br />
 	    <textarea name="content" cols="40" rows="10"></textarea><br /><br />
