@@ -43,7 +43,7 @@
                 <tr>
                   <td>' . $line['pseudo'] . '</td>
                   <td>' . $line['date_crit'] . '</td>
-                  <td>' . $line['note'] . '/10</td>
+                  <td>' . $line['note'] . '/10'.'</td>
                   <td><a href="critique.php?id='.$line['crit_id'].'">Cliquez ici!</a></td>
                 </tr>';
             $line = $req2->fetch(); //passer à la ligne suivante
