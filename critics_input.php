@@ -51,7 +51,10 @@
     </form>
     <?php
       if(isset($_GET['failed'])){
-        echo("<br/>L'envoie à échoué. Réessayez !<br/>");
+        echo("<br/>L'envoie à échoué. Vous avez probablement déjà posté une critique sur ce jeu !<br/>");
+      }
+      else{
+        echo("<br/>Votre critique a bien été posté !<br/>");
       }
     ?>
   </body>
