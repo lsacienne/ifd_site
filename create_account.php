@@ -29,7 +29,7 @@
       <label for="birthdate">Date de naissance:</label>
 	    <input name="birthdate" type="date" required/> <br /><br />
 
-      <label for="bio">Bio:</label>
+      <label for="bio">Bio:<br></label>
 	    <textarea name="bio" cols="40" rows="5"></textarea><br /><br />
 
   	  <label for="mail">Email:</label>
@@ -38,7 +38,7 @@
       <label for="pwd">Mot de passe:</label>
       <input name="pwd" type="password" required/> <br /><br />
 
-      <button type="submit">Create account</button>
+      <button type="submit" class="bouton_log_sign">Create account</button>
     </form>
   </div>
     <?php

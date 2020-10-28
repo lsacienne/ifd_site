@@ -60,7 +60,7 @@ mark {
 
 }
 
-input[type=text],input[type=password] {
+input[type=text],input[type=password],input[type=email],input[type=date],textarea {
     border-radius:0.6em 0.6em 0.6em 0.6em;
     font-size:0.8em;
 }
@@ -71,13 +71,9 @@ input[type=text],input[type=password] {
 
 /* background des pages "classiques" du site */
 .cover {
-    background-size: cover;
-    background-image: linear-gradient(to bottom, #de7c12, #e6922c, #eea644, #f7bb5b, #ffcf74);
-    position: absolute;
-    left:0;
-    top:0;
-    width: 100%;
-    height: 350%;
+    background: rgb(46,13,134);
+    background: linear-gradient(55deg, rgba(206,200,226,1),rgba(168,145,205,1),rgba(120,100,177,1),rgba(87,60,157,1),rgba(46,13,134,1));
+    height:100%;
 }
 
 /* background des pages de login et de register du site */
@@ -144,7 +140,10 @@ input[type=text],input[type=password] {
     font: bold 12px Verdana;
     padding: 6px 0 6px 0;
 }
-
+.form_header{
+    position:absolute;
+    right:5em;
+}
 .white_text {
     color:white;
 }
@@ -154,15 +153,23 @@ input[type=text],input[type=password] {
 }
 
 /*entête à mettre à chaque début de body*/
-#entete {
-    position: absolute;
-    left: 20%;
-    top: 3em;
-    width: 60%;
-    height: 4.5em;
-    background-color: rgba(255,255,255,0.5);
-    background-clip : content-box;
+#header {
+    text-align:right;
+    top:0;
+    right:0;
+    font-size:0.8em;
+    color:white;
 }
+
+#logo {
+    position:absolute;
+    right:0;
+    margin:auto;
+    top:0;
+    width:5em;
+}
+
+
 
 /* le menu */
 ul.navbar {
