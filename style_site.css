@@ -8,9 +8,7 @@ body {
 p {
     text-align: justify;
     text-justify: inter-word;
-    margin:auto;
     line-height: 1em;
-
 }
 
 h1 {
@@ -88,7 +86,7 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 .text_box {
     margin:auto;
     margin-left:19em;
-    margin-top: 10em;
+    margin-top: 5em;
     padding:0.5em;
     background: rgba(0,0,0,0.80);
     border-top-left-radius: 1em 1em;
@@ -116,11 +114,20 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 }
 
 /*l'espace pour mettre le texte*/
-.texte {
-    margin: 20%;
-    margin-top: 10%;
-    background-color: rgba(255,255,255,0.5);
+.corps {
+    color:black;
+    font-size:0.8em;
+    padding:1em;
+    font-family: "Segoe UI",serif;
+    width:50em;
+    margin: auto;
+    margin-top: 5em;
+    background-color: rgba(255,255,255,0.69);
     background-clip : content-box;
+}
+
+.texte_corps{
+    margin:1em;
 }
 
 .bouton_log_sign {
@@ -131,15 +138,7 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     border:none;
     font-size:0.8em;
 }
-/* simple exemple tiré d'ici :http://41mag.fr/18-exemples-de-bouton-en-css-3-inspire-par-google.html */
-.bouton5 {
-    border-radius: 12px 0 12px 0;
-    background: #d34836;
-    border: none;
-    color: #fff;
-    font: bold 12px Verdana;
-    padding: 6px 0 6px 0;
-}
+
 .form_header{
     position:absolute;
     right:5em;
@@ -193,15 +192,88 @@ ul.navbar a {
 }
 
 a:link {
-    color: white
+    color: white;
+    underline:none;
 }
 
 a:visited {
-    color: grey
+    color: grey;
+    underline:none;
 }
 
 address {
     margin-top: 1em;
     padding-top: 1em;
     border-top: thin dotted
+}
+
+/*CSS tiré du site :https://www.pierre-giraud.com/html-css-apprendre-coder-cours/creation-menu-deroulant/*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Segoe UI", serif;
+}
+
+nav{
+    margin: 0 auto;
+    background-color: white;
+    position: absolute;
+    left:1em;
+    top: 1em;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li{
+    float: left;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a:hover{
+    color:#0026FF;
+    border-bottom: 0.2em solid #0026FF;
+}
+
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+nav > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    border:none;
+    width: 100%;
+    text-align: left;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+}
+.sous a:hover{
+    border: none;
+    background-color: RGBa(200,200,200,0.1);
 }

@@ -11,5 +11,11 @@
       <?php
         include 'header.php';
       ?>
+      <div class="corps">
+        <p class="texte_corps">
+            do u know da way ?
+        </p>
+      </div>
+
     </body>
 </html>
