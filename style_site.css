@@ -168,37 +168,21 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     width:5em;
 }
 
-
-
-/* le menu */
-ul.navbar {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 2em;
-    right: 3em;
-    width: 9em }
-
-ul.navbar li {
-    background: black;
-    margin : 0.3em 0;
-    padding: 1.5em;
-    border-right: 0.5em solid grey
-}
-
-ul.navbar a {
-    text-decoration: underline;
+#rectangle_menu_deroulant{
+    width:2em;
+    height:0.5em;
+    background_color:grey;
+    border-radius:0.2em 0.2em 0.2em 0.2em;
 }
 
 a:link {
     color: white;
-    underline:none;
+    text-decoration:none;
 }
 
 a:visited {
     color: grey;
-    underline:none;
+    text-decoration:none;
 }
 
 address {
@@ -207,15 +191,19 @@ address {
     border-top: thin dotted
 }
 
-/*CSS tiré du site :https://www.pierre-giraud.com/html-css-apprendre-coder-cours/creation-menu-deroulant/*/
+
+
+/*CSS tiré du site :https://www.pierre-giraud.com/html-css-apprendre-coder-cours/creation-menu-deroulant/ utilisé pour le menu déroulant*/
 *{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-family: "Segoe UI", serif;
 }
 
 nav{
-    margin: 0 auto;
+    margin:0;
+    padding:0;
+    border-radius:0.5em 0.5em 0.5em 0.5em;
     background-color: white;
     position: absolute;
     left:1em;
@@ -234,7 +222,6 @@ nav ul li{
 }
 
 nav ul::after{
-    content: "";
     display: table;
     clear: both;
 }
@@ -243,8 +230,10 @@ nav a{
     display: block;
     text-decoration: none;
     color: black;
-    border-bottom: 2px solid transparent;
-    padding: 10px 0px;
+    border-bottom: 0em solid transparent;
+    border-bottom-left-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+    padding: 0.2em 0.4em;
 }
 
 nav a:hover{
@@ -261,16 +250,30 @@ nav a:hover{
     z-index: 1000;
 }
 nav > ul li:hover .sous{
-    display: block;
+    display: inline-block;
+    left:3.5em;
+    top:0;
 }
 .sous li{
     float: none;
     border:none;
-    width: 100%;
+    background-color:white;
+    width: 20em;
     text-align: left;
 }
+
+li .title{
+    text-decoration:underline;
+    font-weight:bold;
+    padding:0.5em;
+    width:20em;
+    color:black;
+    font-size:1em;
+}
+
 .sous a{
-    padding: 10px;
+    padding: 0.2em 0.5em;
+    font-size:0.8em;
     border-bottom: none;
 }
 .sous a:hover{
