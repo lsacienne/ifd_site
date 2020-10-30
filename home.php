@@ -11,8 +11,10 @@
       <form method="post" action="search.php" >
 
       <br/><br/><label for="recherche"></label>
-  	  <input name="recherche" type="text" placeholder="Rechercher un jeu"/><br /><br/>
+  	  <input name="recherche" type="text" placeholder="Rechercher un jeu..."/><br /><br/>
       <button type="submit">Rechercher</button>
+
+
 
 
     </form>
