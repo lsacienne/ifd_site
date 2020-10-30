@@ -15,7 +15,7 @@
       <label for="tris">Trier par:</label>
       <select onchange="location.href=this.options[this.selectedIndex].value">
       <option value="note_sorting.php">note</option>
-      <option value="price_sorting.php">prix</option>
+      <option value="search.php">prix</option>
       </select><br/><br/>
     <?php
 
@@ -23,7 +23,7 @@
       /********Requête trier note**********************/
       $recherche = strtolower($_SESSION['recherche']);
       $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
-      $req = $db->prepare("SELECT DISTINCT jeux.nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN critiques ON critiques.id_jeu = jeux.id ORDER BY (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id );");
+      $req = $db->prepare("SELECT DISTINCT jeux.nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN critiques ON critiques.id_jeu = jeux.id ORDER BY (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id) DESC;");
       $req->execute();
       $line = $req->fetch();
 

@@ -14,7 +14,7 @@
 
       <label for="tris">Trier par:</label>
       <select onchange="location.href=this.options[this.selectedIndex].value">
-      <option value="price_sorting.php">prix</option>
+      <option value="search.php">prix</option>
       <option value="note_sorting.php">note</option>
       </select><br/><br/>
     <?php
