@@ -14,9 +14,6 @@
   	  <input name="recherche" type="text" placeholder="Rechercher un jeu..."/><br /><br/>
       <button type="submit">Rechercher</button>
 
-
-
-
     </form>
 
     </body>
