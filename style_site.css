@@ -113,6 +113,8 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     text-align: center;
 }
 
+
+
 /*l'espace pour mettre le texte*/
 .corps {
     color:black;
@@ -126,8 +128,39 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     background-clip : content-box;
 }
 
+.titre_page{
+    text-align:center;
+    color:black;
+    font-size:3em;
+}
+
+
 .texte_corps{
     margin:1em;
+}
+
+.titre_rubrique{
+    text-align:center;
+    font-size:1.5em;
+    font-weight:bold;
+}
+
+.nom_auteur{
+    text-align:right;
+    font-size:1em;
+    font-weight: bold;
+}
+
+.rubrique{
+    margin:auto;
+    padding: 0.5em;
+    border-width:0.4em;
+    border-color:black;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
 }
 
 .bouton_log_sign {
@@ -168,13 +201,6 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     width:5em;
 }
 
-#rectangle_menu_deroulant{
-    width:2em;
-    height:0.5em;
-    background_color:grey;
-    border-radius:0.2em 0.2em 0.2em 0.2em;
-}
-
 a:link {
     color: white;
     text-decoration:none;
@@ -190,6 +216,8 @@ address {
     padding-top: 1em;
     border-top: thin dotted
 }
+
+
 
 
 
