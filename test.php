@@ -12,7 +12,7 @@
     <?php
       /********Query for getting critics infos**********************/
       $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
-      $req = $db->prepare("SELECT utilisateur.id AS userid,date_crit,critiques.content AS content,critiques.nom AS crit_nom,jeux.nom AS jeu_nom,pseudo FROM critiques INNER JOIN link_utilisateur_score ON link_utilisateur_score.id_critiques = critiques.id INNER JOIN utilisateur ON link_utilisateur_score.id_utilisateur = utilisateur.id INNER JOIN jeux ON critiques.id_jeu = jeux.id;");
+      $req = $db->prepare("SELECT jeux.id AS idj,utilisateur.id AS userid,date_crit,critiques.content AS content,critiques.nom AS crit_nom,jeux.nom AS jeu_nom,pseudo FROM critiques INNER JOIN link_utilisateur_score ON link_utilisateur_score.id_critiques = critiques.id INNER JOIN utilisateur ON link_utilisateur_score.id_utilisateur = utilisateur.id INNER JOIN jeux ON critiques.id_jeu = jeux.id;");
       $req->execute();
       $line = $req->fetch();
 
@@ -21,6 +21,7 @@
      $nb_displayed = 0;
       while($line){
           $id = $line['userid'];
+          $idj = $line['idj'];
           $date_crit = strtolower($line['date_crit']);
           $content = strtolower($line['content']);
           $nom_crit = strtolower($line['crit_nom']);
@@ -29,9 +30,10 @@
 
 
           /*********Query for getting the values sum*********************/
-            $req_sum = $db->prepare("SELECT DISTINCT SUM(value) as sumv FROM critiques INNER JOIN link_utilisateur_score ON critiques.id = link_utilisateur_score.id_critiques WHERE critiques.nom = '$nom_crit' AND critiques.id_utilisateur = $id  ;  ");
+            $req_sum = $db->prepare("SELECT DISTINCT SUM(value) as sumv FROM critiques INNER JOIN link_utilisateur_score ON critiques.id = link_utilisateur_score.id_critiques WHERE critiques.id_jeu = '$idj' AND critiques.id_utilisateur = $id  ;  ");
             $req_sum->execute();
             $sum = $req_sum->fetch();
+          
 
 
           /***********Displaying the critics with the best votes********************/
