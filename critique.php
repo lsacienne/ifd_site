@@ -19,7 +19,7 @@
         $critique = $req->fetch();
         echo('
           <h1>'.$critique['crit_name'].'</h1>
-          <b>Critique de '. $critique['pseudo'].' sur : <a href="game.php?id='.$critique['game_id'].'">'.$critique['game_name'].'</a></b>
+          <b>Critique de<a href="profile.php?id='.$critique['user_id'].'"> '. $critique['pseudo'].' </a>sur : <a href="game.php?id='.$critique['game_id'].'">'.$critique['game_name'].'</a></b>
           Réalisé le '.$critique['date_crit'].'</p>
           <p>
           '.nl2br($critique['content']).'
