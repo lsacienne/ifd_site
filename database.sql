@@ -1,110 +1,337 @@
-CREATE DATABASE projetifd;
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : mer. 04 nov. 2020 à 18:05
+-- Version du serveur :  10.4.14-MariaDB
+-- Version de PHP : 7.4.10
 
-USE projetifd;
-
-CREATE TABLE utilisateur(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	pseudo VARCHAR(255),
-	mdp VARCHAR(255),
-	nom VARCHAR(255),
-	prenom VARCHAR(255),
-	bio VARCHAR(5000),
-	date_de_naissance DATE,
-	date_de_creation DATE DEFAULT NOW(),
-	email VARCHAR(255)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE jeux(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nom VARCHAR(255),
-	editeur VARCHAR(255),
-	prix FLOAT,
-	description VARCHAR(5000)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Base de données : `projetifd`
+--
 
-CREATE TABLE categorie(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nom_categorie VARCHAR(255)
-);
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `amis`
+--
 
-CREATE TABLE link_categorie_jeux(
-	id_categorie INT,
-	id_jeux INT,
+CREATE TABLE `amis` (
+  `id_demandeur` int(11) DEFAULT NULL,
+  `id_demande` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-	FOREIGN KEY (id_categorie) REFERENCES categorie(id),
-	FOREIGN KEY (id_jeux) REFERENCES jeux(id)
-);
+--
+-- Déchargement des données de la table `amis`
+--
 
+INSERT INTO `amis` (`id_demandeur`, `id_demande`) VALUES
+(1, 2),
+(2, 1);
 
-CREATE TABLE critiques(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_utilisateur INT,
-	id_jeu INT,
-	nom VARCHAR(255),
-	note INT,
-	content VARCHAR(5000),
-	date_crit DATE DEFAULT NOW(),
+-- --------------------------------------------------------
 
-	FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
-	FOREIGN KEY (id_jeu) REFERENCES jeux(id)
-);
+--
+-- Structure de la table `categorie`
+--
 
+CREATE TABLE `categorie` (
+  `id` int(11) NOT NULL,
+  `nom_categorie` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE amis(
-	id_demandeur INT,
-	id_demande INT,
+--
+-- Déchargement des données de la table `categorie`
+--
 
-	FOREIGN KEY (id_demandeur) REFERENCES utilisateur(id),
-	FOREIGN KEY (id_demande) REFERENCES utilisateur(id)
-);
+INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
+(1, 'Carte'),
+(2, 'Chance'),
+(3, 'Humoristique');
 
+-- --------------------------------------------------------
 
-CREATE TABLE reponses(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	content VARCHAR(5000),
-	id_auteur INT,
-	id_reponse INT DEFAULT 0,
-	id_critiques INT,
+--
+-- Structure de la table `critiques`
+--
 
-	FOREIGN KEY (id_reponse) REFERENCES reponses(id),
-	FOREIGN KEY (id_critiques) REFERENCES critiques(id)
-);
+CREATE TABLE `critiques` (
+  `id` int(11) NOT NULL,
+  `id_utilisateur` int(11) DEFAULT NULL,
+  `id_jeu` int(11) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `note` int(11) DEFAULT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `date_crit` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE link_utilisateur_score(
-	id_utilisateur INT,
-	id_critiques INT,
-	value INT,
+--
+-- Déchargement des données de la table `critiques`
+--
 
-	FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
-	FOREIGN KEY (id_critiques) REFERENCES critiques(id)
-);
+INSERT INTO `critiques` (`id`, `id_utilisateur`, `id_jeu`, `nom`, `note`, `content`, `date_crit`) VALUES
+(1, 1, 1, 'super', 10, 'Un super jeu! J\'adore, vraiment', '2020-11-04'),
+(2, 1, 2, 'nul', 3, 'Trop NUL NUL NUL', '2020-11-04'),
+(3, 2, 1, 'nul', 3, 'Trop NUL NUL NUL', '2020-11-04'),
+(4, 2, 2, 'super', 10, 'Un super jeu! J\'adore, vraiment', '2020-11-04');
 
-INSERT INTO utilisateur (pseudo,mdp,nom,prenom,bio,date_de_naissance,email) VALUES
-	('Xxx_DarkSasuke_xxX','onsenfout','Sarkozy','Nicolas','#TrueGamerForever','1955-01-01','nicolas@sarkozy.com'),
-	('Ducknorris','onsenfout','Caillier','Paul','Jaime les Cannards','2002-03-10','paul.caillier2002@gmail.com');
+-- --------------------------------------------------------
 
-INSERT INTO jeux(nom, editeur,prix,description) VALUES
-	('Uno','Mattel',7.50,'description 1'),
-	('Munchkin','Edge Entertainement',19.99,'description 2');
+--
+-- Structure de la table `jeux`
+--
 
-INSERT INTO categorie(nom_categorie) VALUES('Jeu de carte'),('Jeu de chance'),('Jeu humoristique');
+CREATE TABLE `jeux` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `editeur` varchar(255) DEFAULT NULL,
+  `prix` float DEFAULT NULL,
+  `description` varchar(5000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `jeux`
+--
 
-INSERT INTO critiques(id_utilisateur,id_jeu,nom,note,content) VALUES
-	(1,1,'super',10,'Un super jeu! J''adore, vraiment'),
-	(1,2,'nul',3,'Trop NUL NUL NUL'),
-	(2,1,'nul',3,'Trop NUL NUL NUL'),
-	(2,2,'super',10,'Un super jeu! J''adore, vraiment');
+INSERT INTO `jeux` (`id`, `nom`, `editeur`, `prix`, `description`) VALUES
+(1, 'Uno', 'Mattel', 7.5, 'description 1'),
+(2, 'Munchkin', 'Edge Entertainement', 19.99, 'description 2');
 
+-- --------------------------------------------------------
 
-INSERT INTO reponses(content,id_auteur,id_critiques) VALUES ('Bien dis bouffi !',2,1);
-INSERT INTO reponses(content,id_auteur,id_reponse,id_critiques) VALUES ('Comment ca ? Moi bouffi ?',1,1,1);
+--
+-- Structure de la table `link_categorie_jeux`
+--
 
-INSERT INTO amis VALUES ('1','2'),('2','1');
-INSERT INTO link_categorie_jeux(id_categorie, id_jeux) VALUES ('1', '1'), ('2', '1');
-INSERT INTO link_categorie_jeux(id_categorie, id_jeux) VALUES ('1', '2'), ('3', '2');
-INSERT INTO link_utilisateur_score(id_utilisateur, id_critiques,value) VALUES ('2', '1', '1'), ('1', '1', '1');
-INSERT INTO link_utilisateur_score(id_utilisateur, id_critiques, value) VALUES ('2', '2', '-1'), ('1', '2', '-1');
+CREATE TABLE `link_categorie_jeux` (
+  `id_categorie` int(11) DEFAULT NULL,
+  `id_jeux` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `link_categorie_jeux`
+--
+
+INSERT INTO `link_categorie_jeux` (`id_categorie`, `id_jeux`) VALUES
+(1, 1),
+(2, 1),
+(1, 2),
+(3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `link_utilisateur_score`
+--
+
+CREATE TABLE `link_utilisateur_score` (
+  `id_utilisateur` int(11) DEFAULT NULL,
+  `id_critiques` int(11) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `link_utilisateur_score`
+--
+
+INSERT INTO `link_utilisateur_score` (`id_utilisateur`, `id_critiques`, `value`) VALUES
+(2, 1, 1),
+(1, 1, 1),
+(2, 2, -1),
+(1, 2, -1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponses`
+--
+
+CREATE TABLE `reponses` (
+  `id` int(11) NOT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `id_auteur` int(11) DEFAULT NULL,
+  `id_reponse` int(11) DEFAULT NULL,
+  `id_critiques` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reponses`
+--
+
+INSERT INTO `reponses` (`id`, `content`, `id_auteur`, `id_reponse`, `id_critiques`) VALUES
+(1, 'Bien dis bouffi !', 2, NULL, 1),
+(2, 'Comment ca ? Moi bouffi ?', 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL,
+  `pseudo` varchar(255) DEFAULT NULL,
+  `mdp` varchar(255) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `prenom` varchar(255) DEFAULT NULL,
+  `bio` varchar(5000) DEFAULT NULL,
+  `date_de_naissance` date DEFAULT NULL,
+  `date_de_creation` date DEFAULT current_timestamp(),
+  `email` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `bio`, `date_de_naissance`, `date_de_creation`, `email`) VALUES
+(1, 'Xxx_DarkSasuke_xxX', 'onsenfout', 'Sarkozy', 'Nicolas', '#TrueGamerForever', '1955-01-01', '2020-11-04', 'nicolas@sarkozy.com'),
+(2, 'Ducknorris', 'onsenfout', 'Caillier', 'Paul', 'Jaime les Cannards', '2002-03-10', '2020-11-04', 'paul.caillier2002@gmail.com');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `amis`
+--
+ALTER TABLE `amis`
+  ADD KEY `id_demandeur` (`id_demandeur`),
+  ADD KEY `id_demande` (`id_demande`);
+
+--
+-- Index pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `critiques`
+--
+ALTER TABLE `critiques`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`),
+  ADD KEY `id_jeu` (`id_jeu`);
+
+--
+-- Index pour la table `jeux`
+--
+ALTER TABLE `jeux`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `link_categorie_jeux`
+--
+ALTER TABLE `link_categorie_jeux`
+  ADD KEY `id_categorie` (`id_categorie`),
+  ADD KEY `id_jeux` (`id_jeux`);
+
+--
+-- Index pour la table `link_utilisateur_score`
+--
+ALTER TABLE `link_utilisateur_score`
+  ADD KEY `id_utilisateur` (`id_utilisateur`),
+  ADD KEY `id_critiques` (`id_critiques`);
+
+--
+-- Index pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_reponse` (`id_reponse`),
+  ADD KEY `id_critiques` (`id_critiques`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `critiques`
+--
+ALTER TABLE `critiques`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `jeux`
+--
+ALTER TABLE `jeux`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `amis`
+--
+ALTER TABLE `amis`
+  ADD CONSTRAINT `amis_ibfk_1` FOREIGN KEY (`id_demandeur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `amis_ibfk_2` FOREIGN KEY (`id_demande`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `critiques`
+--
+ALTER TABLE `critiques`
+  ADD CONSTRAINT `critiques_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `critiques_ibfk_2` FOREIGN KEY (`id_jeu`) REFERENCES `jeux` (`id`);
+
+--
+-- Contraintes pour la table `link_categorie_jeux`
+--
+ALTER TABLE `link_categorie_jeux`
+  ADD CONSTRAINT `link_categorie_jeux_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`),
+  ADD CONSTRAINT `link_categorie_jeux_ibfk_2` FOREIGN KEY (`id_jeux`) REFERENCES `jeux` (`id`);
+
+--
+-- Contraintes pour la table `link_utilisateur_score`
+--
+ALTER TABLE `link_utilisateur_score`
+  ADD CONSTRAINT `link_utilisateur_score_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `link_utilisateur_score_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
+
+--
+-- Contraintes pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  ADD CONSTRAINT `reponses_ibfk_1` FOREIGN KEY (`id_reponse`) REFERENCES `reponses` (`id`),
+  ADD CONSTRAINT `reponses_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
