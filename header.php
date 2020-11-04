@@ -14,13 +14,13 @@
                     <li><a href="#">apéro</a></li>
                     <li><a href="#">argent</a></li>
                     <li><a href="#">...</a></li>
-                    
+
                     <li><div class="title">durée</div></li>
                     <li><a href="#">5-10 minutes</a></li>
                     <li><a href="#">15-30 minutes</a></li>
                     <li><a href="#">45 minutes - 1 heure</a></li>
                     <li><a href="#">+ de 1 heure</a></li>
-                    
+
                     <li><div class="title">âges</div></li>
                     <li><a href="#">0-3 ans</a></li>
                     <li><a href="#">3-7 ans</a></li>
@@ -33,7 +33,15 @@
         </nav>
          <form action="logout.php"> <div class="form_header">',
            $_SESSION['uname'],'         <input type="submit" class="bouton_log_sign" value="Logout"/> </div> <img src="arts/logo/logo_site_ifd.png" id="logo">
-         </form> 
+         </form>
+
+         <form method="post" action="search.php" >
+
+         <br/><br/><label for="recherche"></label>
+         <input name="recherche" type="text" placeholder="Rechercher un jeu..."/><br /><br/>
+         <button type="submit">Rechercher</button>
+
+         </form>
         ';
     }else{
       header('location: login.php');

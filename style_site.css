@@ -77,8 +77,13 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 /* boîte pouvant contenir du texte qu'on utilise pour le login et le register */
 .text_box {
     margin:auto;
+<<<<<<< HEAD
     margin-left:19em;
     margin-top: 5em;
+=======
+    margin-left: 5em;
+    margin-top: 4em;
+>>>>>>> main
     padding:0.5em;
     background: rgba(0,0,0,0.80);
     border-top-left-radius: 1em 1em;

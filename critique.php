@@ -7,6 +7,7 @@
   <body>
     <?php
       include 'header.php';
+      include 'print_comment.php';
       if(!(isset($_GET['id']))){
         echo("<br/>La page n'existe pas, désolé");
       }else{
@@ -18,10 +19,10 @@
         $critique = $req->fetch();
         echo('
           <h1>'.$critique['crit_name'].'</h1>
-          <b>Critique de '. $critique['pseudo'].' sur : <a href="game.php?id='.$critique['game_id'].'">'.$critique['game_name'].'</a></b>
+          <b>Critique de<a href="profile.php?id='.$critique['user_id'].'"> '. $critique['pseudo'].' </a>sur : <a href="game.php?id='.$critique['game_id'].'">'.$critique['game_name'].'</a></b>
           Réalisé le '.$critique['date_crit'].'</p>
           <p>
-          '.$critique['content'].'
+          '.nl2br($critique['content']).'
           </p>
           <h1>Note : '.$critique['note'].'/10</h1>
         ');
@@ -43,14 +44,17 @@
             $textMinus="<mark>-</mark>";
           }
         }
-        echo '<a href = "update_votes.php?value=1&id='.$id.'">'.$textPlus.'<a/> / <a href = "update_votes.php?value=0&id='.$id.'">0<a/> / <a href = "update_votes.php?value=-1&id='.$id.'">'.$textMinus.'<a/>';
+        echo '<a href = "update_votes.php?value=1&id='.$id.'">'.$textPlus.'<a/> / <a href = "update_votes.php?value=0&id='.$id.'">0<a/> / <a href = "update_votes.php?value=-1&id='.$id.'">'.$textMinus.'<a/></h3>';
+        echo '<h3><b>Commentaires:</b></h3>';
 
-
-
-
-
-
-
+    ?>
+    <form method="post" action="add_comment.php?id=<?php echo($_GET['id'])?>">
+      <label for="input">Commentaire:</label>
+      <input type="text" name="input" maxlength="100" size="50">
+      <button type="submit">></button>
+    </form>
+    <?php
+        printComs($id,NULL,0,$db);
       }
     ?>
   </body>

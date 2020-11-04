@@ -25,15 +25,16 @@
           echo("<b>Editeur: </b>$editeur<br/>");
           echo("<b>Prix: </b>$prix €<br/>");
           echo("<b>Description: </b>$description<br/>");
-          $sql = "SELECT critiques.id AS crit_id,pseudo,date_crit,note FROM utilisateur INNER JOIN critiques ON utilisateur.id = critiques.id_utilisateur WHERE critiques.id_jeu = $id";
+          $sql = "SELECT critiques.id AS crit_id,critiques.nom AS nom,pseudo,date_crit,note FROM utilisateur INNER JOIN critiques ON utilisateur.id = critiques.id_utilisateur WHERE critiques.id_jeu = $id";
           $req2 = $db->prepare($sql);
           $req2->execute();
           $line = $req2->fetch();
           echo"
-            <h1>Critiques:</h1><br/>
-            <table>
+            <h1>Critiques:</h1>
+            <table style=\"border: 1px solid black\">
             <tr>
-              <th>Pseudo</th>
+              <th>Par</th>
+              <th>Titre</th>
               <th>Date</th>
               <th>Note</th>
               <th>Lien</th>
@@ -42,6 +43,7 @@
             echo'
                 <tr>
                   <td>' . $line['pseudo'] . '</td>
+                  <td>' . $line['nom'] . '</td>
                   <td>' . $line['date_crit'] . '</td>
                   <td>' . $line['note'] . '/10'.'</td>
                   <td><a href="critique.php?id='.$line['crit_id'].'">Cliquez ici!</a></td>

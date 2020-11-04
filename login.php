@@ -39,6 +39,7 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     ?>
     </div>
     <p class="white_text"><br>Pas encore membre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>
+
   </div>
   </body>
 </html>
