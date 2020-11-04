@@ -31,7 +31,7 @@
     $line = $jeux->fetch();
 
     /**************Users query*******************************************/
-    $users = $db->prepare("SELECT pseudo,nom,prenom FROM utilisateur WHERE ('$recherche' = utilisateur.pseudo OR '$recherche' = utilisateur.prenom OR '$recherche' = utilisateur.nom);");
+    $users = $db->prepare("SELECT id,pseudo,nom,prenom FROM utilisateur WHERE ('$recherche' = utilisateur.pseudo OR '$recherche' = utilisateur.prenom OR '$recherche' = utilisateur.nom);");
     $users->execute();
     $tmp = $users->fetch();
 
@@ -90,7 +90,7 @@
       $prenom = $tmp['prenom'];
 
       ?>
-      <a href="profile.php"><?=$pseudo?> </a>
+      <a href="profile.php?id=<?=$tmp['id']?>"><?=$pseudo?> </a>
       <?php
       echo ("- $prenom $nom</br></br>");
       $tmp = $users->fetch();
