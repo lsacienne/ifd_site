@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Header</title>
+    </head>
+    <body>
 <?php
   session_start();
   if($_SESSION['login']){
@@ -17,3 +24,14 @@
     header('location: login.php');
   }
 ?>
+
+<form method="post" action="search.php" >
+
+<br/><br/><label for="recherche"></label>
+<input name="recherche" type="text" placeholder="Rechercher un jeu..."/><br /><br/>
+<button type="submit">Rechercher</button>
+
+</form>
+
+</body>
+</html>
