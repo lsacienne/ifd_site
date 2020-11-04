@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 04 nov. 2020 à 17:25
+-- Généré le : mer. 04 nov. 2020 à 18:05
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
@@ -20,6 +20,114 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `projetifd`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `amis`
+--
+
+CREATE TABLE `amis` (
+  `id_demandeur` int(11) DEFAULT NULL,
+  `id_demande` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `amis`
+--
+
+INSERT INTO `amis` (`id_demandeur`, `id_demande`) VALUES
+(1, 2),
+(2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+CREATE TABLE `categorie` (
+  `id` int(11) NOT NULL,
+  `nom_categorie` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
+(1, 'Carte'),
+(2, 'Chance'),
+(3, 'Humoristique');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `critiques`
+--
+
+CREATE TABLE `critiques` (
+  `id` int(11) NOT NULL,
+  `id_utilisateur` int(11) DEFAULT NULL,
+  `id_jeu` int(11) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `note` int(11) DEFAULT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `date_crit` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `critiques`
+--
+
+INSERT INTO `critiques` (`id`, `id_utilisateur`, `id_jeu`, `nom`, `note`, `content`, `date_crit`) VALUES
+(1, 1, 1, 'super', 10, 'Un super jeu! J\'adore, vraiment', '2020-11-04'),
+(2, 1, 2, 'nul', 3, 'Trop NUL NUL NUL', '2020-11-04'),
+(3, 2, 1, 'nul', 3, 'Trop NUL NUL NUL', '2020-11-04'),
+(4, 2, 2, 'super', 10, 'Un super jeu! J\'adore, vraiment', '2020-11-04');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `jeux`
+--
+
+CREATE TABLE `jeux` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `editeur` varchar(255) DEFAULT NULL,
+  `prix` float DEFAULT NULL,
+  `description` varchar(5000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `jeux`
+--
+
+INSERT INTO `jeux` (`id`, `nom`, `editeur`, `prix`, `description`) VALUES
+(1, 'Uno', 'Mattel', 7.5, 'description 1'),
+(2, 'Munchkin', 'Edge Entertainement', 19.99, 'description 2');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `link_categorie_jeux`
+--
+
+CREATE TABLE `link_categorie_jeux` (
+  `id_categorie` int(11) DEFAULT NULL,
+  `id_jeux` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `link_categorie_jeux`
+--
+
+INSERT INTO `link_categorie_jeux` (`id_categorie`, `id_jeux`) VALUES
+(1, 1),
+(2, 1),
+(1, 2),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -41,17 +149,93 @@ INSERT INTO `link_utilisateur_score` (`id_utilisateur`, `id_critiques`, `value`)
 (2, 1, 1),
 (1, 1, 1),
 (2, 2, -1),
-(1, 2, -1),
-(6, 5, -1),
-(7, 5, -1),
-(3, 5, -1),
-(7, 6, 2),
-(3, 6, 4),
-(2, 8, 9);
+(1, 2, -1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponses`
+--
+
+CREATE TABLE `reponses` (
+  `id` int(11) NOT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `id_auteur` int(11) DEFAULT NULL,
+  `id_reponse` int(11) DEFAULT NULL,
+  `id_critiques` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reponses`
+--
+
+INSERT INTO `reponses` (`id`, `content`, `id_auteur`, `id_reponse`, `id_critiques`) VALUES
+(1, 'Bien dis bouffi !', 2, NULL, 1),
+(2, 'Comment ca ? Moi bouffi ?', 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL,
+  `pseudo` varchar(255) DEFAULT NULL,
+  `mdp` varchar(255) DEFAULT NULL,
+  `nom` varchar(255) DEFAULT NULL,
+  `prenom` varchar(255) DEFAULT NULL,
+  `bio` varchar(5000) DEFAULT NULL,
+  `date_de_naissance` date DEFAULT NULL,
+  `date_de_creation` date DEFAULT current_timestamp(),
+  `email` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `bio`, `date_de_naissance`, `date_de_creation`, `email`) VALUES
+(1, 'Xxx_DarkSasuke_xxX', 'onsenfout', 'Sarkozy', 'Nicolas', '#TrueGamerForever', '1955-01-01', '2020-11-04', 'nicolas@sarkozy.com'),
+(2, 'Ducknorris', 'onsenfout', 'Caillier', 'Paul', 'Jaime les Cannards', '2002-03-10', '2020-11-04', 'paul.caillier2002@gmail.com');
 
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `amis`
+--
+ALTER TABLE `amis`
+  ADD KEY `id_demandeur` (`id_demandeur`),
+  ADD KEY `id_demande` (`id_demande`);
+
+--
+-- Index pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `critiques`
+--
+ALTER TABLE `critiques`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_utilisateur` (`id_utilisateur`),
+  ADD KEY `id_jeu` (`id_jeu`);
+
+--
+-- Index pour la table `jeux`
+--
+ALTER TABLE `jeux`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `link_categorie_jeux`
+--
+ALTER TABLE `link_categorie_jeux`
+  ADD KEY `id_categorie` (`id_categorie`),
+  ADD KEY `id_jeux` (`id_jeux`);
 
 --
 -- Index pour la table `link_utilisateur_score`
@@ -61,8 +245,77 @@ ALTER TABLE `link_utilisateur_score`
   ADD KEY `id_critiques` (`id_critiques`);
 
 --
+-- Index pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_reponse` (`id_reponse`),
+  ADD KEY `id_critiques` (`id_critiques`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `categorie`
+--
+ALTER TABLE `categorie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `critiques`
+--
+ALTER TABLE `critiques`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT pour la table `jeux`
+--
+ALTER TABLE `jeux`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `amis`
+--
+ALTER TABLE `amis`
+  ADD CONSTRAINT `amis_ibfk_1` FOREIGN KEY (`id_demandeur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `amis_ibfk_2` FOREIGN KEY (`id_demande`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `critiques`
+--
+ALTER TABLE `critiques`
+  ADD CONSTRAINT `critiques_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `critiques_ibfk_2` FOREIGN KEY (`id_jeu`) REFERENCES `jeux` (`id`);
+
+--
+-- Contraintes pour la table `link_categorie_jeux`
+--
+ALTER TABLE `link_categorie_jeux`
+  ADD CONSTRAINT `link_categorie_jeux_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`),
+  ADD CONSTRAINT `link_categorie_jeux_ibfk_2` FOREIGN KEY (`id_jeux`) REFERENCES `jeux` (`id`);
 
 --
 -- Contraintes pour la table `link_utilisateur_score`
@@ -70,6 +323,13 @@ ALTER TABLE `link_utilisateur_score`
 ALTER TABLE `link_utilisateur_score`
   ADD CONSTRAINT `link_utilisateur_score_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
   ADD CONSTRAINT `link_utilisateur_score_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
+
+--
+-- Contraintes pour la table `reponses`
+--
+ALTER TABLE `reponses`
+  ADD CONSTRAINT `reponses_ibfk_1` FOREIGN KEY (`id_reponse`) REFERENCES `reponses` (`id`),
+  ADD CONSTRAINT `reponses_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
