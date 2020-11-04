@@ -32,15 +32,13 @@
             </ul>
         </nav>
          <form action="logout.php"> <div class="form_header">',
-           $_SESSION['uname'],'         <input type="submit" class="bouton_log_sign" value="Logout"/> </div> <img src="arts/logo/logo_site_ifd.png" id="logo">
+           $_SESSION['uname'],'         <input type="submit" class="bouton_log_sign" value="Logout"/> </div> <a href="home.php"><img src="arts/logo/logo_site_ifd.png" id="logo"></a>
          </form>
 
-         <form method="post" action="search.php" >
-
-         <br/><br/><label for="recherche"></label>
-         <input name="recherche" type="text" placeholder="Rechercher un jeu..."/><br /><br/>
-         <button type="submit">Rechercher</button>
-
+         <form method="post" action="search.php" class="barre_recherche" > 
+             <label for="recherche"></label>
+             <input name="recherche" type="text" placeholder="Rechercher un jeu..."/>
+             <button type="submit">Rechercher</button>
          </form>
         ';
     }else{

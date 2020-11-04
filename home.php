@@ -35,7 +35,7 @@ GROUP BY critiques.id ORDER BY date_crit DESC, up DESC");
                     <p class="texte_corps">',$crit_display[0];
                   if(strlen($line['contenu'])>200){
                       echo '
-                        ...<a href=#><br> Lire la suite</a></p>
+                        ...<a href="critique.php?id= '.$line['crit'].'"><br> Lire la suite</a></p>
                     </li>
                   ';
                   } else{

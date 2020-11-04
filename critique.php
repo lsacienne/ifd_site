@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Critique</title>
   </head>
-  <body>
     <?php
       include 'header.php';
+      echo'<div class="corps">';
       include 'print_comment.php';
       if(!(isset($_GET['id']))){
         echo("<br/>La page n'existe pas, désolé");
@@ -57,5 +57,6 @@
         printComs($id,NULL,0,$db);
       }
     ?>
+    </div>
   </body>
 </html>

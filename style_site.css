@@ -10,11 +10,18 @@ p {
     text-justify: inter-word;
     line-height: 1em;
 }
-
+/* Titre du site */
 h1 {
-    /* Sous titre pour des rubriques */
     color:whitesmoke;
     font-size: 1em;
+}
+
+/* resultats de pages */
+h2 {
+    color:black;
+    font-size:1.5em;
+    font-weight: bold;
+    margin:0;
 }
 
 
@@ -105,6 +112,33 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     text-align: center;
 }
 
+/* css pour placer la barre de recherche sur les pages */
+.barre_recherche{
+    position:absolute;
+    top:1.5em;
+    right:24em;
+    font-size:1.4em;
+}
+
+.barre_recherche input{
+    padding:0.1em 0.4em 0.1em 0.4em;
+    width:20em;
+}
+
+.barre_recherche button{
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+    background-color:whitesmoke;
+    color:#0026FF;
+    border-style:solid;
+    border-color:#0026FF;
+    padding: 0.1em 1em 0.1em 1em;
+    font-size:0.8em;
+    margin-top-bottom:auto;
+}
+
+.barre_recherche button:hover{
+    background-color: RGBa(200,200,200,1);
+}
 
 
 /*l'espace pour mettre le texte*/
@@ -146,10 +180,9 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     font-weight: bold;
     font-style:italic;
 }
-
+/* rubrique entouré d'une ligne noire autour d'un texte: utilisé pour les mini critiques et les grandes critiques */
 .rubrique{
     margin:0.5em;
-    width:20em;
     padding: 0.5em;
     border-width:0.4em;
     border-color:black;
@@ -158,6 +191,10 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     border-top-right-radius: 0.5em 0.5em;
     border-bottom-right-radius: 0.5em 0.5em;
     border-bottom-left-radius: 0.5em 0.5em;
+}
+
+li.rubrique{
+    width:20em;
 }
 
 .home{
@@ -175,9 +212,23 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 
 
 
+.rubrique b{
+    color:grey;
+    font-style:italic;
+    margin-left:3em;
+}
 
+.rubrique i{
+    margin-left:2em;
+}
 
+a.crit_com{
+    margin-left:4em;
+}
 
+i.crit_com{
+    margin-left:4em;
+}
 
 .bouton_log_sign {
     border-radius:0.6em 0.6em 0.6em 0.6em;
@@ -187,6 +238,11 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     border:none;
     font-size:0.8em;
 }
+
+.cover .bouton_log_sign:hover{
+    background-color:#001AAD;
+}
+
 
 .form_header{
     position:absolute;
@@ -228,8 +284,14 @@ a:link {
     text-decoration:none;
 }
 
+.corps a:link {
+    color:darkslategray;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
 a:visited {
-    color: grey;
+    color: mediumslateblue;
     text-decoration:none;
 }
 
@@ -280,7 +342,7 @@ nav a{
     display: block;
     text-decoration: none;
     color: black;
-    border-bottom: 0em solid transparent;
+    border-bottom: 0 solid transparent;
     border-bottom-left-radius: 0.2em;
     border-bottom-right-radius: 0.2em;
     padding: 0.2em 0.4em;
@@ -293,7 +355,7 @@ nav a:hover{
 
 .sous{
     display: none;
-    box-shadow: 0px 1px 2px #CCC;
+    box-shadow: 0 1px 2px #CCC;
     background-color: white;
     position: absolute;
     width: 100%;
