@@ -1,110 +1,77 @@
-CREATE DATABASE projetifd;
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : mer. 04 nov. 2020 à 17:25
+-- Version du serveur :  10.4.14-MariaDB
+-- Version de PHP : 7.4.10
 
-USE projetifd;
-
-CREATE TABLE utilisateur(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	pseudo VARCHAR(255),
-	mdp VARCHAR(255),
-	nom VARCHAR(255),
-	prenom VARCHAR(255),
-	bio VARCHAR(5000),
-	date_de_naissance DATE,
-	date_de_creation DATE DEFAULT NOW(),
-	email VARCHAR(255)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE jeux(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nom VARCHAR(255),
-	editeur VARCHAR(255),
-	prix FLOAT,
-	description VARCHAR(5000)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Base de données : `projetifd`
+--
 
-CREATE TABLE categorie(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	nom_categorie VARCHAR(255)
-);
+-- --------------------------------------------------------
 
+--
+-- Structure de la table `link_utilisateur_score`
+--
 
-CREATE TABLE link_categorie_jeux(
-	id_categorie INT,
-	id_jeux INT,
+CREATE TABLE `link_utilisateur_score` (
+  `id_utilisateur` int(11) DEFAULT NULL,
+  `id_critiques` int(11) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-	FOREIGN KEY (id_categorie) REFERENCES categorie(id),
-	FOREIGN KEY (id_jeux) REFERENCES jeux(id)
-);
+--
+-- Déchargement des données de la table `link_utilisateur_score`
+--
 
+INSERT INTO `link_utilisateur_score` (`id_utilisateur`, `id_critiques`, `value`) VALUES
+(2, 1, 1),
+(1, 1, 1),
+(2, 2, -1),
+(1, 2, -1),
+(6, 5, -1),
+(7, 5, -1),
+(3, 5, -1),
+(7, 6, 2),
+(3, 6, 4),
+(2, 8, 9);
 
-CREATE TABLE critiques(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	id_utilisateur INT,
-	id_jeu INT,
-	nom VARCHAR(255),
-	note INT,
-	content VARCHAR(5000),
-	date_crit DATE DEFAULT NOW(),
+--
+-- Index pour les tables déchargées
+--
 
-	FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
-	FOREIGN KEY (id_jeu) REFERENCES jeux(id)
-);
+--
+-- Index pour la table `link_utilisateur_score`
+--
+ALTER TABLE `link_utilisateur_score`
+  ADD KEY `id_utilisateur` (`id_utilisateur`),
+  ADD KEY `id_critiques` (`id_critiques`);
 
+--
+-- Contraintes pour les tables déchargées
+--
 
-CREATE TABLE amis(
-	id_demandeur INT,
-	id_demande INT,
+--
+-- Contraintes pour la table `link_utilisateur_score`
+--
+ALTER TABLE `link_utilisateur_score`
+  ADD CONSTRAINT `link_utilisateur_score_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
+  ADD CONSTRAINT `link_utilisateur_score_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
+COMMIT;
 
-	FOREIGN KEY (id_demandeur) REFERENCES utilisateur(id),
-	FOREIGN KEY (id_demande) REFERENCES utilisateur(id)
-);
-
-
-CREATE TABLE reponses(
-	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	content VARCHAR(5000),
-	id_auteur INT,
-	id_reponse INT DEFAULT 0,
-	id_critiques INT,
-
-	FOREIGN KEY (id_reponse) REFERENCES reponses(id),
-	FOREIGN KEY (id_critiques) REFERENCES critiques(id)
-);
-
-CREATE TABLE link_utilisateur_score(
-	id_utilisateur INT,
-	id_critiques INT,
-	value INT,
-
-	FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
-	FOREIGN KEY (id_critiques) REFERENCES critiques(id)
-);
-
-INSERT INTO utilisateur (pseudo,mdp,nom,prenom,bio,date_de_naissance,email) VALUES
-	('Xxx_DarkSasuke_xxX','onsenfout','Sarkozy','Nicolas','#TrueGamerForever','1955-01-01','nicolas@sarkozy.com'),
-	('Ducknorris','onsenfout','Caillier','Paul','Jaime les Cannards','2002-03-10','paul.caillier2002@gmail.com');
-
-INSERT INTO jeux(nom, editeur,prix,description) VALUES
-	('Uno','Mattel',7.50,'description 1'),
-	('Munchkin','Edge Entertainement',19.99,'description 2');
-
-INSERT INTO categorie(nom_categorie) VALUES('Jeu de carte'),('Jeu de chance'),('Jeu humoristique');
-
-
-INSERT INTO critiques(id_utilisateur,id_jeu,nom,note,content) VALUES
-	(1,1,'super',10,'Un super jeu! J''adore, vraiment'),
-	(1,2,'nul',3,'Trop NUL NUL NUL'),
-	(2,1,'nul',3,'Trop NUL NUL NUL'),
-	(2,2,'super',10,'Un super jeu! J''adore, vraiment');
-
-
-INSERT INTO reponses(content,id_auteur,id_critiques) VALUES ('Bien dis bouffi !',2,1);
-INSERT INTO reponses(content,id_auteur,id_reponse,id_critiques) VALUES ('Comment ca ? Moi bouffi ?',1,1,1);
-
-INSERT INTO amis VALUES ('1','2'),('2','1');
-INSERT INTO link_categorie_jeux(id_categorie, id_jeux) VALUES ('1', '1'), ('2', '1');
-INSERT INTO link_categorie_jeux(id_categorie, id_jeux) VALUES ('1', '2'), ('3', '2');
-INSERT INTO link_utilisateur_score(id_utilisateur, id_critiques,value) VALUES ('2', '1', '1'), ('1', '1', '1');
-INSERT INTO link_utilisateur_score(id_utilisateur, id_critiques, value) VALUES ('2', '2', '-1'), ('1', '2', '-1');
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
