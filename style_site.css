@@ -117,7 +117,10 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     margin: auto;
     margin-top: 5em;
     background-color: rgba(255,255,255,0.69);
-    background-clip : content-box;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
 }
 
 .titre_page{
@@ -159,12 +162,14 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 
 .home{
     list-style-type: none;
-    margin-top:3em;
+    margin-top:1em;
 }
 
 .home li{
-    display:inline-block;
+    float:left;
+    top:1em;
     position:relative;
+    background-color: rgba(255,255,255,0.69);
 }
 
 
