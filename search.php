@@ -25,41 +25,47 @@
     else $recherche = $_SESSION['recherche'];
 
     $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
-    $req = $db->prepare("SELECT nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY jeux.prix;");
-    $req->execute();
-    $line = $req->fetch();
+    /**************Games query*******************************************/
+    $jeux = $db->prepare("SELECT nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY jeux.prix;");
+    $jeux->execute();
+    $line = $jeux->fetch();
+
+    /**************Users query*******************************************/
+    $users = $db->prepare("SELECT pseudo,nom,prenom FROM utilisateur WHERE ('$recherche' = utilisateur.pseudo OR '$recherche' = utilisateur.prenom OR '$recherche' = utilisateur.nom);");
+    $users->execute();
+    $tmp = $users->fetch();
 
     /******************Displaying results**********************************/
 
-    $in = FALSE;//To avoid displaying the same game several times
-    $tmp = NULL;
+    $in = FALSE; //To avoid displaying the same game several times
+    $test = NULL; //To avoid displaying the same game several times
     while($line){
-        $nom = strtolower($line['nom']);
-        $editeur = strtolower($line['editeur']);
-        $prix = strtolower($line['prix']);
+        $nom = $line['nom'];
+        $editeur = $line['editeur'];
+        $prix = $line['prix'];
 
         /************Query for getting the game's categories**************/
-        $req2 = $db->prepare("SELECT nom_categorie FROM categorie INNER JOIN link_categorie_jeux ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN jeux ON link_categorie_jeux.id_jeux = jeux.id WHERE jeux.nom = '$nom';");
-        $req2->execute();
-        $tmp2= $req2->fetch();
+        $categories = $db->prepare("SELECT nom_categorie FROM categorie INNER JOIN link_categorie_jeux ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN jeux ON link_categorie_jeux.id_jeux = jeux.id WHERE jeux.nom = '$nom';");
+        $categories->execute();
+        $tmp2= $categories->fetch();
         $categorie = $tmp2['nom_categorie'];
-        $tmp2 = $req2->fetch();
+        $tmp2 = $categories->fetch();
 
         /************Concatenating categories' name**********************/
         while($tmp2){
           $categorie = $categorie . ', ' . $tmp2['nom_categorie'];
-          $tmp2 = $req2->fetch();
+          $tmp2 = $categories->fetch();
         }
 
         /*********Query for getting the average note*********************/
-          $req3 = $db->prepare("SELECT DISTINCT AVG(note) as average FROM critiques INNER JOIN jeux ON critiques.id_jeu = jeux.id WHERE jeux.nom = '$nom';  ");
-          $req3->execute();
-          $tmp3 = $req3->fetch();
+          $avgnote = $db->prepare("SELECT DISTINCT AVG(note) as average FROM critiques INNER JOIN jeux ON critiques.id_jeu = jeux.id WHERE jeux.nom = '$nom';  ");
+          $avgnote->execute();
+          $tmp3 = $avgnote->fetch();
 
       /************Checking if a game has already been displayed******/
-      if( ($tmp != $nom) ){
+      if( ($test != $nom) ){
         $in = FALSE;
-        $tmp  = $nom;
+        $test  = $nom;
       }
 
     /***********Displaying the game********************/
@@ -72,7 +78,22 @@
         echo("Par $editeur - $prix euros</br></br>");
         echo ("$categorie</br>");
       }
-      $line = $req->fetch();
+      $line = $jeux->fetch();
+
+    }
+
+    /***********Displaying user********************/
+
+    while($tmp){
+      $pseudo = $tmp['pseudo'];
+      $nom = $tmp['nom'];
+      $prenom = $tmp['prenom'];
+
+      ?>
+      <a href="profile.php"><?=$pseudo?> </a>
+      <?php
+      echo ("- $prenom $nom</br></br>");
+      $tmp = $users->fetch();
     }
     ?>
 
