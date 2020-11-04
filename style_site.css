@@ -8,9 +8,7 @@ body {
 p {
     text-align: justify;
     text-justify: inter-word;
-    margin:auto;
     line-height: 1em;
-
 }
 
 h1 {
@@ -19,14 +17,6 @@ h1 {
     font-size: 1em;
 }
 
-h2 {
-    /* Mettre des petites didascalies */
-    font-style: italic;
-    font-size: 1em;
-    margin: 5%;
-    text-align: center;
-    text-justify:inter-word;
-}
 
 h3 {
     /*souligner un truc*/
@@ -60,7 +50,7 @@ mark {
 
 }
 
-input[type=text],input[type=password] {
+input[type=text],input[type=password],input[type=email],input[type=date],textarea {
     border-radius:0.6em 0.6em 0.6em 0.6em;
     font-size:0.8em;
 }
@@ -71,13 +61,9 @@ input[type=text],input[type=password] {
 
 /* background des pages "classiques" du site */
 .cover {
-    background-size: cover;
-    background-image: linear-gradient(to bottom, #de7c12, #e6922c, #eea644, #f7bb5b, #ffcf74);
-    position: absolute;
-    left:0;
-    top:0;
-    width: 100%;
-    height: 350%;
+    background: rgb(46,13,134);
+    background: linear-gradient(55deg, rgba(206,200,226,1),rgba(168,145,205,1),rgba(120,100,177,1),rgba(87,60,157,1),rgba(46,13,134,1));
+    height:100%;
 }
 
 /* background des pages de login et de register du site */
@@ -91,8 +77,13 @@ input[type=text],input[type=password] {
 /* boîte pouvant contenir du texte qu'on utilise pour le login et le register */
 .text_box {
     margin:auto;
+<<<<<<< HEAD
+    margin-left:19em;
+    margin-top: 5em;
+=======
     margin-left: 5em;
     margin-top: 4em;
+>>>>>>> main
     padding:0.5em;
     background: rgba(0,0,0,0.80);
     border-top-left-radius: 1em 1em;
@@ -119,13 +110,79 @@ input[type=text],input[type=password] {
     text-align: center;
 }
 
+
+
 /*l'espace pour mettre le texte*/
-.texte {
-    margin: 20%;
-    margin-top: 10%;
-    background-color: rgba(255,255,255,0.5);
-    background-clip : content-box;
+.corps {
+    color:black;
+    font-size:0.8em;
+    padding:1em;
+    font-family: "Segoe UI",serif;
+    width:69em;
+    margin: auto;
+    margin-top: 5em;
+    background-color: rgba(255,255,255,0.69);
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
 }
+
+.titre_page{
+    text-align:center;
+    color:black;
+    font-size:3em;
+}
+
+
+.texte_corps{
+    margin:1em;
+}
+
+.titre_rubrique{
+    text-align:center;
+    font-size:1.5em;
+    font-weight:bold;
+}
+
+.nom_auteur{
+    text-align:right;
+    font-size:1em;
+    font-weight: bold;
+    font-style:italic;
+}
+
+.rubrique{
+    margin:0.5em;
+    width:20em;
+    padding: 0.5em;
+    border-width:0.4em;
+    border-color:black;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.home{
+    list-style-type: none;
+    margin-top:1em;
+}
+
+.home li{
+    float:left;
+    top:1em;
+    position:relative;
+    background-color: rgba(255,255,255,0.69);
+}
+
+
+
+
+
+
+
 
 .bouton_log_sign {
     border-radius:0.6em 0.6em 0.6em 0.6em;
@@ -135,16 +192,11 @@ input[type=text],input[type=password] {
     border:none;
     font-size:0.8em;
 }
-/* simple exemple tiré d'ici :http://41mag.fr/18-exemples-de-bouton-en-css-3-inspire-par-google.html */
-.bouton5 {
-    border-radius: 12px 0 12px 0;
-    background: #d34836;
-    border: none;
-    color: #fff;
-    font: bold 12px Verdana;
-    padding: 6px 0 6px 0;
-}
 
+.form_header{
+    position:absolute;
+    right:5em;
+}
 .white_text {
     color:white;
 }
@@ -153,48 +205,134 @@ input[type=text],input[type=password] {
     color:black;
 }
 
+
+
+
+
+
+
 /*entête à mettre à chaque début de body*/
-#entete {
-    position: absolute;
-    left: 20%;
-    top: 3em;
-    width: 60%;
-    height: 4.5em;
-    background-color: rgba(255,255,255,0.5);
-    background-clip : content-box;
+#header {
+    text-align:right;
+    top:0;
+    right:0;
+    font-size:0.8em;
+    color:white;
 }
 
-/* le menu */
-ul.navbar {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 2em;
-    right: 3em;
-    width: 9em }
-
-ul.navbar li {
-    background: black;
-    margin : 0.3em 0;
-    padding: 1.5em;
-    border-right: 0.5em solid grey
-}
-
-ul.navbar a {
-    text-decoration: underline;
+#logo {
+    position:absolute;
+    right:0;
+    margin:auto;
+    top:0;
+    width:5em;
 }
 
 a:link {
-    color: white
+    color: white;
+    text-decoration:none;
 }
 
 a:visited {
-    color: grey
+    color: grey;
+    text-decoration:none;
 }
 
 address {
     margin-top: 1em;
     padding-top: 1em;
     border-top: thin dotted
+}
+
+
+
+
+
+/*CSS tiré du site :https://www.pierre-giraud.com/html-css-apprendre-coder-cours/creation-menu-deroulant/ utilisé pour le menu déroulant*/
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", serif;
+}
+
+nav{
+    margin:0;
+    padding:0;
+    border-radius:0.5em 0.5em 0.5em 0.5em;
+    background-color: white;
+    position: absolute;
+    left:1em;
+    top: 1em;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li{
+    float: left;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+nav ul::after{
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 0em solid transparent;
+    border-bottom-left-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+    padding: 0.2em 0.4em;
+}
+
+nav a:hover{
+    color:#0026FF;
+    border-bottom: 0.2em solid #0026FF;
+}
+
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+nav > ul li:hover .sous{
+    display: inline-block;
+    left:3.5em;
+    top:0;
+}
+.sous li{
+    float: none;
+    border:none;
+    background-color:white;
+    width: 20em;
+    text-align: left;
+}
+
+li .title{
+    text-decoration:underline;
+    font-weight:bold;
+    padding:0.5em;
+    width:20em;
+    color:black;
+    font-size:1em;
+}
+
+.sous a{
+    padding: 0.2em 0.5em;
+    color:black;
+    font-size:0.8em;
+    border-bottom: none;
+}
+.sous a:hover{
+    border: none;
+    background-color: RGBa(200,200,200,0.1);
 }
