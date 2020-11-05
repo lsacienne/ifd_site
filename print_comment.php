@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style_site.css">
 <?php
   function printComs($idCrit,$idPreviousCom,$layer,$db){
     if($idPreviousCom==NULL){
@@ -10,7 +11,7 @@
     $line= $req->fetch();
     while($line){
       echo(str_repeat("|&nbsp&nbsp&nbsp&nbsp",$layer).'|<br/>');
-      echo(str_repeat("|&nbsp&nbsp&nbsp&nbsp",$layer).'<a href="profile.php?id='.$line['uid'].'"><b>[ '.$line['pseudo'].'</b></a> : <a href="reply_input.php?id='.$line['id'].'">'.$line['content'].'</a><br/>');
+      echo(str_repeat("|&nbsp&nbsp&nbsp&nbsp",$layer).'<a class="commentaire" href="profile.php?id='.$line['uid'].'"><b>[ '.$line['pseudo'].'</b></a> : <a href="reply_input.php?id='.$line['id'].'">'.$line['content'].'</a><br/>');
       printComs($idCrit,$line['id'],$layer+1,$db);
       $line= $req->fetch();
     }
