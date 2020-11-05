@@ -30,7 +30,7 @@ USE projetifd;
 --
 
 CREATE TABLE `amis` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo_1` varchar(255) DEFAULT NULL,
   `pseudo_2` varchar(255) DEFAULT NULL,
   `attente` tinyint(1) DEFAULT NULL
@@ -50,7 +50,7 @@ INSERT INTO `amis` (`id`, `pseudo_1`, `pseudo_2`, `attente`) VALUES
 --
 
 CREATE TABLE `categorie` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom_categorie` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -70,7 +70,7 @@ INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
 --
 
 CREATE TABLE `critiques` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_utilisateur` int(11) DEFAULT NULL,
   `id_jeu` int(11) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
@@ -96,7 +96,7 @@ INSERT INTO `critiques` (`id`, `id_utilisateur`, `id_jeu`, `nom`, `note`, `conte
 --
 
 CREATE TABLE `jeux` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
   `editeur` varchar(255) DEFAULT NULL,
   `prix` float DEFAULT NULL,
@@ -161,7 +161,7 @@ INSERT INTO `link_utilisateur_score` (`id_utilisateur`, `id_critiques`, `value`)
 --
 
 CREATE TABLE `reponses` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(5000) DEFAULT NULL,
   `id_auteur` int(11) DEFAULT NULL,
   `id_reponse` int(11) DEFAULT NULL,
@@ -183,7 +183,7 @@ INSERT INTO `reponses` (`id`, `content`, `id_auteur`, `id_reponse`, `id_critique
 --
 
 CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(255) DEFAULT NULL,
   `mdp` varchar(255) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
