@@ -4,7 +4,7 @@
   $req = $db->prepare("SELECT id,pseudo,mdp,nom FROM utilisateur;");
   $req->execute();
   $line = $req->fetch();
-  while($line && !($line['pseudo']==$_POST['uname'])){
+  while($line && !($line['pseudo']==$_POST['pseudo'])){
     $line = $req->fetch();
   }
   if($line){
