@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 04 nov. 2020 à 18:05
+-- Généré le : mer. 04 nov. 2020 à 23:33
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 -- Base de données : `projetifd`
 --
 
+CREATE DATABASE projetifd;
+USE projetifd;
 -- --------------------------------------------------------
 
 --
@@ -28,17 +30,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `amis` (
-  `id_demandeur` int(11) DEFAULT NULL,
-  `id_demande` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `pseudo_1` varchar(255) DEFAULT NULL,
+  `pseudo_2` varchar(255) DEFAULT NULL,
+  `attente` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `amis`
 --
 
-INSERT INTO `amis` (`id_demandeur`, `id_demande`) VALUES
-(1, 2),
-(2, 1);
+INSERT INTO `amis` (`id`, `pseudo_1`, `pseudo_2`, `attente`) VALUES
+(1, 'Xxx_DarkSasuke_xxX', 'Ducknorris', 0);
 
 -- --------------------------------------------------------
 
@@ -207,8 +210,7 @@ INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `bio`, `date_
 -- Index pour la table `amis`
 --
 ALTER TABLE `amis`
-  ADD KEY `id_demandeur` (`id_demandeur`),
-  ADD KEY `id_demande` (`id_demande`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `categorie`
@@ -263,73 +265,10 @@ ALTER TABLE `utilisateur`
 --
 
 --
--- AUTO_INCREMENT pour la table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT pour la table `critiques`
---
-ALTER TABLE `critiques`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `jeux`
---
-ALTER TABLE `jeux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `reponses`
---
-ALTER TABLE `reponses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `amis`
+-- AUTO_INCREMENT pour la table `amis`
 --
 ALTER TABLE `amis`
-  ADD CONSTRAINT `amis_ibfk_1` FOREIGN KEY (`id_demandeur`) REFERENCES `utilisateur` (`id`),
-  ADD CONSTRAINT `amis_ibfk_2` FOREIGN KEY (`id_demande`) REFERENCES `utilisateur` (`id`);
-
---
--- Contraintes pour la table `critiques`
---
-ALTER TABLE `critiques`
-  ADD CONSTRAINT `critiques_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
-  ADD CONSTRAINT `critiques_ibfk_2` FOREIGN KEY (`id_jeu`) REFERENCES `jeux` (`id`);
-
---
--- Contraintes pour la table `link_categorie_jeux`
---
-ALTER TABLE `link_categorie_jeux`
-  ADD CONSTRAINT `link_categorie_jeux_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id`),
-  ADD CONSTRAINT `link_categorie_jeux_ibfk_2` FOREIGN KEY (`id_jeux`) REFERENCES `jeux` (`id`);
-
---
--- Contraintes pour la table `link_utilisateur_score`
---
-ALTER TABLE `link_utilisateur_score`
-  ADD CONSTRAINT `link_utilisateur_score_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`),
-  ADD CONSTRAINT `link_utilisateur_score_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
-
---
--- Contraintes pour la table `reponses`
---
-ALTER TABLE `reponses`
-  ADD CONSTRAINT `reponses_ibfk_1` FOREIGN KEY (`id_reponse`) REFERENCES `reponses` (`id`),
-  ADD CONSTRAINT `reponses_ibfk_2` FOREIGN KEY (`id_critiques`) REFERENCES `critiques` (`id`);
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
