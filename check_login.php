@@ -4,13 +4,13 @@
   $req = $db->prepare("SELECT id,pseudo,mdp,nom FROM utilisateur;");
   $req->execute();
   $line = $req->fetch();
-  while($line && !($line['pseudo']==$_POST['uname'])){
+  while($line && !($line['pseudo']==$_POST['pseudo'])){
     $line = $req->fetch();
   }
   if($line){
     if(password_verify($_POST['pwd'],$line['mdp'])){
       $_SESSION['id'] = $line['id'];
-      $_SESSION['pseudo'] = $_POST['pseudo'];
+      $_SESSION['pseudo'] = $line['pseudo'];
       $_SESSION['login'] = true;
       header("location: home.php");
     }else{
