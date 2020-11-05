@@ -31,10 +31,13 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     <div class="white_text">
     <?php
     if(isset($_GET['failed'])){
-        echo("<br/>Connection failed, please try again :(<br/>");
+        echo("<br/>Ce compte n'existe pas<br/>");
+    }
+    if(isset($_GET['failed2'])){
+        echo("<br/>Le mot de passe est erroné, veuillez réessayer<br/>");
     }
     if(isset($_GET['success'])){
-        echo("<br/>Account created succesfully, please log in :)<br/>");
+        echo("<br/>Compte crée avec succès, veuilliez vous connecter<br/>");
     }
     ?>
     </div>
@@ -43,4 +46,3 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
   </div>
   </body>
 </html>
-

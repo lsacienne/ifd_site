@@ -36,7 +36,7 @@
 	    <input name="mail" type="email" required/> <br /><br />
 
       <label for="pwd">Mot de passe:</label>
-      <input name="pwd" type="password" required/> <br /><br />
+      <input name="pwd" type="password" maxlength="50" required/> <br /><br />
 
       <button type="submit" class="bouton_log_sign">Create account</button>
     </form>

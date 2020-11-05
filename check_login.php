@@ -1,17 +1,21 @@
 <?php
   session_start();
   $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
-  $req = $db->prepare("SELECT id,pseudo,nom FROM utilisateur;");
+  $req = $db->prepare("SELECT id,pseudo,mdp,nom FROM utilisateur;");
   $req->execute();
   $line = $req->fetch();
-  while(!($line['pseudo']==$_POST['uname'] && $line['nom']==$_POST['pwd']) && $line){
+  while($line && !($line['pseudo']==$_POST['uname'])){
     $line = $req->fetch();
   }
   if($line){
-    $_SESSION['id'] = $line['id'];
-    $_SESSION['uname'] = $_POST['uname'];
-    $_SESSION['login'] = true;
-    header("location: home.php");
+    if(password_verify($_POST['pwd'],$line['mdp'])){
+      $_SESSION['id'] = $line['id'];
+      $_SESSION['uname'] = $_POST['uname'];
+      $_SESSION['login'] = true;
+      header("location: home.php");
+    }else{
+      header("location: login.php?failed2");
+    }
   }else{
     header("location: login.php?failed");
   }

@@ -3,7 +3,7 @@
   $req1 = $db->prepare("SELECT pseudo,email FROM utilisateur;");
   $req1->execute();
   $line = $req1->fetch();
-  while(($line['pseudo']!=$_POST['uname'] && $line['email']!=$_POST['mail']) && $line){
+  while($line && ($line['pseudo']!=$_POST['uname'] && $line['email']!=$_POST['mail'])){
     $line = $req1->fetch();
   }
   if($line){
@@ -15,10 +15,10 @@
     $birthdate = $_POST['birthdate'];
     $bio = str_replace('\'','\'\'',$_POST['bio']);
     $mail = $_POST['mail'];
-    $pwd = $_POST['pwd'];
-    $sql = "INSERT INTO utilisateur (pseudo,nom,prenom,bio,date_de_naissance,email) VALUES ('$uname','$lastname','$name','$bio','$birthdate','$mail');";
+    $pwd = password_hash($_POST['pwd'],PASSWORD_DEFAULT,['cost'=>8]);
+    $sql = "INSERT INTO utilisateur (pseudo,mdp,nom,prenom,bio,date_de_naissance,email) VALUES ('$uname','$pwd','$lastname','$name','$bio','$birthdate','$mail');";
     $req2 = $db->prepare($sql);
     $req2->execute();
-    header("location: login.php?success");
+    header('location: login.php?success');
   }
 ?>
