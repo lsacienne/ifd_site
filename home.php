@@ -48,11 +48,8 @@ GROUP BY critiques.id ORDER BY date_crit DESC, up DESC");
 
               echo '</ul>';
 
-              /***********Friends system********************/
-              include 'usert.php';
-              echo '</br></br></br>';
+
           ?>
       </div>
-
     </body>
 </html>

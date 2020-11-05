@@ -4,6 +4,8 @@
   <?php
     session_start();
     if($_SESSION['login']){
+      /***********Friends system********************/
+      include 'usert.php';
       echo '
         <nav>
             <ul>

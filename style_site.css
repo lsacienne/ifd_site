@@ -141,6 +141,53 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 }
 
 
+
+
+
+/* liste d'amis toujours affichée sur les pages du site */
+.liste_amis{
+    position:fixed; /* On met en fixed pour qu'on puisse visualiser en continue la liste d'amis */
+    right:0.3em;
+    top:6.3em;
+    width:11.5em;
+    padding: 0.5em;
+    text-align: left;
+    line-height:150%;
+    font-size:1em;
+    background-color: rgba(255,255,255,0.69);
+    border-width:0.4em;
+    border-color:black;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.liste_amis h2{
+    font-size:1em;
+}
+
+.liste_amis p{
+    font-size:0.7em;
+    line-height:1.3em;
+    color:black;
+    font-weight:bold;
+}
+
+.liste_amis a:link{
+    color:darkslategray;
+}
+
+.liste_amis a:visited{
+    color:darkslategray;
+}
+
+
+
+
+/* corps du texte pour toutes les pages*/
+
 /*l'espace pour mettre le texte*/
 .corps {
     color:black;
@@ -211,6 +258,7 @@ li.rubrique{
 
 
 
+/* corps des pages pour les pages qui ne sont pas le home */
 
 .rubrique b{
     color:grey;
@@ -228,6 +276,39 @@ a.crit_com{
 
 i.crit_com{
     margin-left:4em;
+}
+
+.corps a:link {
+    color:darkslategray;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.corps a:visited{
+    color:darkslategray;
+}
+
+
+
+
+/* le header de chaque page */
+
+
+/*entête à mettre à chaque début de body*/
+#header {
+    text-align:right;
+    top:0;
+    right:0;
+    font-size:0.8em;
+    color:white;
+}
+
+#logo {
+    position:absolute;
+    right:0;
+    margin:auto;
+    top:0;
+    width:5em;
 }
 
 .bouton_log_sign {
@@ -262,37 +343,16 @@ i.crit_com{
 
 
 
-/*entête à mettre à chaque début de body*/
-#header {
-    text-align:right;
-    top:0;
-    right:0;
-    font-size:0.8em;
-    color:white;
-}
 
-#logo {
-    position:absolute;
-    right:0;
-    margin:auto;
-    top:0;
-    width:5em;
-}
+
+
 
 a:link {
     color: white;
     text-decoration:none;
 }
 
-.corps a:link {
-    color:darkslategray;
-    font-weight: bolder;
-    text-decoration: none;
-}
 
-.corps a:visited{
-    color:darkslategray;
-}
 
 a:visited {
     color: mediumslateblue;
@@ -302,7 +362,7 @@ a:visited {
 address {
     margin-top: 1em;
     padding-top: 1em;
-    border-top: thin dotted
+    border-top: thin dotted;
 }
 
 
