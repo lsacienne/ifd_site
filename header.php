@@ -2,6 +2,21 @@
 <div id="header">
 
   <?php
+    //1Jeux>
+    //-Liste des jeux
+    //-Découvrir un jeu (affiche un jeu aléatoire)
+    //-Rechercher un jeu (recherche approfondi par fourchette de prix, éditeur, ect);
+    //-Ajouter un jeu
+    //
+    //Critiques>
+    //-Dernière critique
+    //-Critique aléatoire
+    //-Critiques tendances (la page home)
+    //
+    //[PSEUDO]>
+    //-profile
+    //-se déconnecter
+    //-supprimer son compte
     session_start();
     if($_SESSION['login']){
       /***********Friends system********************/
@@ -11,24 +26,21 @@
             <ul>
                 <li><a href="#"><img src="arts/menus/menus_icone.png" width="50"> </a>
                   <ul class="sous">
-                    <li><div class="title">genre</div></li>
-                    <li><a href="#">Cartes</a></li>
-                    <li><a href="#">apéro</a></li>
-                    <li><a href="#">argent</a></li>
-                    <li><a href="#">...</a></li>
+                    <li><div class="title">Jeux</div></li>
+                    <li><a href="#">Tout les jeux</a></li>
+                    <li><a href="random.php?content=1">Découvrir un jeu</a></li>
+                    <li><a href="#">Rechercher un jeu</a></li>
 
-                    <li><div class="title">durée</div></li>
-                    <li><a href="#">5-10 minutes</a></li>
-                    <li><a href="#">15-30 minutes</a></li>
-                    <li><a href="#">45 minutes - 1 heure</a></li>
-                    <li><a href="#">+ de 1 heure</a></li>
+                    <li><div class="title">Critiques</div></li>
+                    <li><a href="last.php">Dernière critique</a></li>
+                    <li><a href="random.php?content=2">Critique aléatoire</a></li>
+                    <li><a href="home.php">Critiques tendances</a></li>
+                    <li><a href="critics_input.php">Ajouter une critique</a></li>
 
-                    <li><div class="title">âges</div></li>
-                    <li><a href="#">0-3 ans</a></li>
-                    <li><a href="#">3-7 ans</a></li>
-                    <li><a href="#">7-10 ans</a></li>
-                    <li><a href="#">10-13 ans</a></li>
-                    <li><a href="#">18 ans et +</a></li>
+                    <li><div class="title">'.$_SESSION['pseudo'].'</div></li>
+                    <li><a href="profile.php?id='.$_SESSION['id'].'">Profil</a></li>
+                    <li><a href="logout.php">Se déconnecter</a></li>
+                    <li><a href="delete.php">Supprimer son compte</a></li>
                   </ul>
                 </li>
             </ul>
