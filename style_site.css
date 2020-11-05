@@ -68,9 +68,9 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
 
 /* background des pages "classiques" du site */
 .cover {
-    background: rgb(46,13,134);
     background: linear-gradient(55deg, rgba(206,200,226,1),rgba(168,145,205,1),rgba(120,100,177,1),rgba(87,60,157,1),rgba(46,13,134,1));
-    height:100%;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 /* background des pages de login et de register du site */
@@ -133,7 +133,7 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     border-color:#0026FF;
     padding: 0.1em 1em 0.1em 1em;
     font-size:0.8em;
-    margin-top-bottom:auto;
+    margin-bottom:auto;
 }
 
 .barre_recherche button:hover{
@@ -288,6 +288,10 @@ a:link {
     color:darkslategray;
     font-weight: bolder;
     text-decoration: none;
+}
+
+.corps a:visited{
+    color:darkslategray;
 }
 
 a:visited {
