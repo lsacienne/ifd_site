@@ -47,8 +47,9 @@ GROUP BY critiques.id ORDER BY date_crit DESC, up DESC");
               }
 
               echo '</ul>';
+
+
           ?>
       </div>
-
     </body>
 </html>
