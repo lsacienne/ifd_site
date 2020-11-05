@@ -19,8 +19,8 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     </p>
     <br/><br>
     <form class="white_text" method ="post" action="check_login.php">
-        <label for="uname">Username:</label>
-        <input type="text" name="uname" placeholder="Username" required>
+        <label for="pseudo">Username:</label>
+        <input type="text" name="pseudo" placeholder="Username" required>
 
         <label for="pwd">Password:</label>
         <input type="password" name="pwd" placeholder="Password" required>
