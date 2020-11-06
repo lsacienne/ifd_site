@@ -8,10 +8,10 @@ if($_GET['action'] == "delete"){
 }
 
 if($_GET['action'] == "add"){
-  $req = $db->prepare("INSERT INTO amis(pseudo_1, pseudo_2, attente) VALUES (:pseudo_1, :pseudo_2, :attente); ");
+  $req = $db->prepare("INSERT INTO amis(id1, id2, attente) VALUES (:id1, :id2, :attente); ");
   $req->execute([
-    "pseudo_1" => $_SESSION['pseudo'],
-    "pseudo_2" => $_GET['pseudo'],
+    "id1" => $_SESSION['id'],
+    "id2" => $_GET['id'],
     "attente" => 1
   ]);
   header('Location:home.php');
