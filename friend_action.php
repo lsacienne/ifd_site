@@ -4,7 +4,7 @@ $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
 
 if($_GET['action'] == "delete"){
   $db->query("DELETE FROM amis WHERE id =".$_GET['id']);
-  header('Location:home.php');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 if($_GET['action'] == "add"){
@@ -14,12 +14,12 @@ if($_GET['action'] == "add"){
     "id2" => $_GET['id'],
     "attente" => 1
   ]);
-  header('Location:home.php');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 if($_GET['action'] == "accept"){
   $db->query("UPDATE amis SET attente = 0 WHERE id = ".$_GET['id']);
-  header('Location:home.php');
+  header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 
 

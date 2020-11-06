@@ -19,6 +19,20 @@
         <?php
           include 'header.php';
 
+            /*****************Friend request***************/
+            echo '</br></br></br>';
+            $id = $_GET['id'];
+            $req2 = $db->query("SELECT * FROM utilisateur;");
+            $data = $req2->fetchALL();
+
+            for ($i=0; $i < sizeof($data) ; $i++) {
+              if( (!in_array($data[$i]['pseudo'],$user_check)) && ($data[$i]['id'] == $id) ){
+                echo $data[$i]['pseudo'] . "<a href='friend_action.php?action=add&id=".$data[$i]['id']." '> Demander en ami</a></br>";
+              }
+            }
+
+
+          /************************************************/
           echo('
             <div class="corps">
                 <div class="titre_page">'.$usr['pseudo'].'</div>

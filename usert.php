@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" type="text/css" href="style_site.css">
 <div class="liste_amis">
     <?php
