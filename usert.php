@@ -53,21 +53,5 @@
 
 
             ?>
-        </p>
-
-    <h2>Autres utilisateurs</h2>
-        <p>
-            <?php
-              $req2 = $db->query("SELECT * FROM utilisateur;");
-              $data = $req2->fetchALL();
-
-              for ($i=0; $i < sizeof($data) ; $i++) {
-                if(!in_array($data[$i]['pseudo'],$user_check)){
-                  echo $data[$i]['pseudo'] . "<a href='friend_action.php?action=add&id=".$data[$i]['id']." '> Demander en ami</a></br>";
-                }
-              }
-
-
-             ?>
-        </p>
+        
 </div>
