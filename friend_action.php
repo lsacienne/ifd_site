@@ -3,6 +3,7 @@ include 'header.php';
 $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
 
 if($_GET['action'] == "delete"){
+  $db->query("DELETE FROM messages WHERE id_amis =".$_GET['id']);
   $db->query("DELETE FROM amis WHERE id =".$_GET['id']);
   header('Location: ' . $_SERVER['HTTP_REFERER']);
 }

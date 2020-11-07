@@ -4,7 +4,7 @@
 
       $user_check[] = "";
       $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
-      $req = $db->prepare("SELECT amis.attente AS attente,amis.id AS ida,u1.pseudo AS pseudo_1,u2.pseudo AS pseudo_2 FROM amis INNER JOIN utilisateur u1 ON u1.id = amis.id1 INNER JOIN utilisateur u2 ON u2.id = amis.id2 WHERE (u1.pseudo = :pseudo_1 OR u2.pseudo = :pseudo_2) ; ");
+      $req = $db->prepare("SELECT amis.id1 AS id1,amis.id2 AS id2,amis.attente AS attente,amis.id AS ida,u1.pseudo AS pseudo_1,u2.pseudo AS pseudo_2 FROM amis INNER JOIN utilisateur u1 ON u1.id = amis.id1 INNER JOIN utilisateur u2 ON u2.id = amis.id2 WHERE (u1.pseudo = :pseudo_1 OR u2.pseudo = :pseudo_2) ; ");
       $req->execute([
         "pseudo_1" => $_SESSION['pseudo'],
         "pseudo_2" => $_SESSION['pseudo']
@@ -25,14 +25,14 @@
               for ($i=0; $i < sizeof($data) ; $i++) {
                 if($data[$i]['pseudo_1'] == $_SESSION['pseudo']){
 
-                  echo $data[$i]['pseudo_2'] . "<a href='friend_action.php?action=delete&id=".$data[$i]['ida']."  '> Supprimer</a>";
+                  echo "</br><a href='chat.php?id=".$data[$i]['id2']."&num=15' >" . $data[$i]['pseudo_2'] . " </a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']."  '> Supprimer</a>";
                   $user_check[] = $data[$i]['pseudo_2'];
 
                   if($data[$i]['attente'] == true)
                     echo " (en attente d'être acceptée)";
                 }else{
                   if($data[$i]['attente'] == false){
-                    echo $data[$i]['pseudo_1'] . "<a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a>";
+                    echo "</br><a href='chat.php?id=".$data[$i]['id1']."&num=15' >".  $data[$i]['pseudo_1'] . "</a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a></br>";
                       $user_check[] = $data[$i]['pseudo_1'];
                   }
                 }
@@ -55,5 +55,5 @@
 
 
             ?>
-        
+
 </div>
