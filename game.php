@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="cover">
   <head>
     <meta charset="utf-8">
     <title>Jeu</title>
@@ -10,6 +10,7 @@
       if (!(isset($_GET['id']))){
         echo("<h1>Cette page n'existe pas, sorry bebou</h1>");
       }else{
+        echo'<div class="corps">';
         $id = $_GET['id'];
         $db = new PDO( "mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
         $sql = "SELECT id,nom,editeur,prix,description FROM jeux WHERE id='$id';";
@@ -51,6 +52,7 @@
             $line = $req2->fetch(); //passer à la ligne suivante
           }
           echo "</table>";
+          echo'</div>';
         }else{
           echo("<h1>Cette page n'existe pas, sorry bebou</h1>");
         }

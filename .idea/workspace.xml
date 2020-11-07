@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2720ac6c-5302-46b3-870f-58d505a2a3c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/critique.php" beforeDir="false" afterPath="$PROJECT_DIR$/critique.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/friend_action.php" beforeDir="false" afterPath="$PROJECT_DIR$/friend_action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/print_comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/print_comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style_site.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/update_votes.php" beforeDir="false" afterPath="$PROJECT_DIR$/update_votes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usert.php" beforeDir="false" afterPath="$PROJECT_DIR$/usert.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reply_input.php" beforeDir="false" afterPath="$PROJECT_DIR$/reply_input.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +42,7 @@
       <workItem from="1604574188658" duration="1389000" />
       <workItem from="1604581558497" duration="730000" />
       <workItem from="1604596562891" duration="19528000" />
+      <workItem from="1604670404876" duration="4686000" />
     </task>
     <servers />
   </component>
