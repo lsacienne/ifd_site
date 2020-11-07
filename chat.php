@@ -19,7 +19,7 @@
       if(!($out)){
         //case where the friendship simply wasn't found
         header('location: error.html');
-      }else if($out['id1']==$_SESSION['id'] || $out['id2']==$_SESSION['id']){
+      }else if(($out['id1']==$_SESSION['id'] || $out['id2']==$_SESSION['id']) && $out['attente']==0){
         if($out['id1']==$_SESSION['id']){
           $sender = 0;
           $req = $db->prepare('SELECT pseudo FROM utilisateur WHERE id='.$out['id2']);
