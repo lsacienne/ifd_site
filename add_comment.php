@@ -10,5 +10,5 @@
   $sql = "INSERT INTO reponses(content,id_auteur,id_critiques) VALUES ('$content','$userid','$criticid')";
   $req = $db->prepare($sql);
   $req->execute();
-  //header("location: critique.php?id=".$criticid);//redirect the user to post where the comment is located
+  header("location: critique.php?id=".$criticid);//redirect the user to post where the comment is located
 ?>
