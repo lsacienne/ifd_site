@@ -319,6 +319,38 @@ i.crit_com{
     color:orangered;
 }
 
+.rubrique select{
+    color:black;
+    border: solid black 0.1em;
+    background-color: lightblue;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.rubrique textarea[name=content]{
+    resize : both;
+    min-width : 40%;
+    min-height : 10em;
+    max-width : 100%;
+}
+.center{
+    text-align:center;
+}
+
+#submit_critique{
+    padding:0.2em;
+    width:4em;
+    text-align: center;
+    font-weight: bolder;
+    font-size:1em;
+    color:white;
+    border: thin dotted whitesmoke;
+    background-color: midnightblue;
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+}
+
 
 /* les boutons de upvote */
 
