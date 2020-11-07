@@ -14,45 +14,33 @@
       else $recherche = $_SESSION['recherche'];
 
       $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
+
     ?>
     <div class="corps">
         <h2>Résultats</h2>
 
-
+        <form method="post" action="search.php" onChange="submit()">
+        <label for="tris">Trier par:</label>
+        <select name="tris">
+        <option <?php if(empty($_POST['tris']) || $_POST['tris'] == "prix") echo "selected";?> value="prix">prix</option>
+        <option <?php if(!empty($_POST['tris']) && $_POST['tris'] == "note") echo "selected";?> value="note">note</option>
+        </select><br/><br/>
+        </form>
             <?php
             if(!empty($_POST['tris'])) $t = $_POST['tris'];
 
             /**************Games sorted by price*******************************************/
 
             if(empty($t) || $t == "prix"){
-              ?>
-              <form method="post" action="search.php" onChange="submit()">
-              <label for="tris">Trier par:</label>
-              <select name="tris">
-              <option value="prix">prix</option>
-              <option value="note">note</option>
-              </select><br/><br/>
-              </form>
-              <?php
               $jeux = $db->prepare("SELECT nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY jeux.prix;");
               $jeux->execute();
               $line = $jeux->fetch();
             }
 
 
-            /********Query for note sorting**********************/
+            /********Games sorted by note**********************/
             if(!empty($t) && $t == "note"){
 
-              ?>
-
-              <form method="post" action="search.php" onChange="submit()">
-              <label for="tris">Trier par:</label>
-              <select name="tris">
-              <option value="note">note</option>
-              <option value="prix">prix</option>
-              </select><br/><br/>
-              </form>
-              <?php
               $jeux = $db->prepare("SELECT DISTINCT jeux.nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN critiques ON critiques.id_jeu = jeux.id WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id) DESC;");
               $jeux->execute();
               $line = $jeux->fetch();
