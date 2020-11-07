@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+//form letting the user login to the website, sending a post to check_login.php
 session_start();
 if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     header('location: home.php');
@@ -30,18 +31,21 @@ if(isset($_SESSION['login']) && $_SESSION['login'] == true){
     </form>
     <div class="white_text">
     <?php
+    //case if no username were found
     if(isset($_GET['failed'])){
         echo("<br/>Ce compte n'existe pas<br/>");
     }
+    //case where the username was found, the the password didn't match
     if(isset($_GET['failed2'])){
         echo("<br/>Le mot de passe est erroné, veuillez réessayer<br/>");
     }
+    //case where a signing in was successfull
     if(isset($_GET['success'])){
         echo("<br/>Compte crée avec succès, veuilliez vous connecter<br/>");
     }
     ?>
     </div>
-    <p class="white_text"><br>Pas encore membre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>
+    <p class="white_text"><br>Pas encore membre ? <a href="create_account.php">Inscrivez-vous ici !</a></p>//link t
 
   </div>
   </body>

@@ -2,32 +2,21 @@
 <div id="header">
 
   <?php
-    //1Jeux>
-    //-Liste des jeux
-    //-Découvrir un jeu (affiche un jeu aléatoire)
-    //-Rechercher un jeu (recherche approfondi par fourchette de prix, éditeur, ect);
-    //-Ajouter un jeu
-    //
-    //Critiques>
-    //-Dernière critique
-    //-Critique aléatoire
-    //-Critiques tendances (la page home)
-    //
-    //[PSEUDO]>
-    //-profile
-    //-se déconnecter
-    //-supprimer son compte
+    //This file is included in almost every other file. It check if the user is logged in and sent it back to the login page if not.
+    //It also display the username, as well as a menu to navigate through the website, and a global search bar.
     session_start();
+    //check if the user is logged in
     if($_SESSION['login']){
       /***********Friends system********************/
       include 'usert.php';
+      //side menu, logout button and search bar
       echo '
         <nav>
             <ul>
                 <li><a href="#"><img src="arts/menus/menus_icone.png" width="50"> </a>
                   <ul class="sous">
                     <li><div class="title">Jeux</div></li>
-                    <li><a href="#">Tout les jeux</a></li>
+                    <li><a href="games_display.php">Tout les jeux</a></li>
                     <li><a href="random.php?content=1">Découvrir un jeu</a></li>
                     <li><a href="#">Rechercher un jeu</a></li>
 

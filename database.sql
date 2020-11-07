@@ -1,9 +1,10 @@
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 05 nov. 2020 à 21:22
+-- Généré le : ven. 06 nov. 2020 à 01:06
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.10
 
@@ -20,30 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `projetifd`
 --
-
+CREATE DATABASE projetifd;
+USE projetifd;
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `amis`
 --
-CREATE DATABASE projetifd;
-
-USE projetifd;
 
 CREATE TABLE `amis` (
-  `id` int(11) NOT NULL,
-  `pseudo_1` varchar(255) DEFAULT NULL,
-  `pseudo_2` varchar(255) DEFAULT NULL,
-  `attente` tinyint(1) DEFAULT NULL
+`id` int(11) NOT NULL,
+`id1` int(11) NOT NULL,
+`id2` int(11) NOT NULL,
+`attente` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `amis`
 --
 
-INSERT INTO `amis` (`id`, `pseudo_1`, `pseudo_2`, `attente`) VALUES
-(1, 'Xxx_DarkSasuke_xxX', 'Ducknorris', 0),
-(3, 'Quindecinn', 'zer67', 0);
+INSERT INTO `amis` (`id`, `id1`, `id2`, `attente`) VALUES
+(6, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -52,8 +50,8 @@ INSERT INTO `amis` (`id`, `pseudo_1`, `pseudo_2`, `attente`) VALUES
 --
 
 CREATE TABLE `categorie` (
-  `id` int(11) NOT NULL,
-  `nom_categorie` varchar(255) DEFAULT NULL
+`id` int(11) NOT NULL,
+`nom_categorie` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -72,13 +70,13 @@ INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
 --
 
 CREATE TABLE `critiques` (
-  `id` int(11) NOT NULL,
-  `id_utilisateur` int(11) DEFAULT NULL,
-  `id_jeu` int(11) DEFAULT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `note` int(11) DEFAULT NULL,
-  `content` varchar(5000) DEFAULT NULL,
-  `date_crit` date DEFAULT current_timestamp()
+`id` int(11) NOT NULL,
+`id_utilisateur` int(11) DEFAULT NULL,
+`id_jeu` int(11) DEFAULT NULL,
+`nom` varchar(255) DEFAULT NULL,
+`note` int(11) DEFAULT NULL,
+`content` varchar(5000) DEFAULT NULL,
+`date_crit` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -101,11 +99,11 @@ INSERT INTO `critiques` (`id`, `id_utilisateur`, `id_jeu`, `nom`, `note`, `conte
 --
 
 CREATE TABLE `jeux` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `editeur` varchar(255) DEFAULT NULL,
-  `prix` float DEFAULT NULL,
-  `description` varchar(5000) DEFAULT NULL
+`id` int(11) NOT NULL,
+`nom` varchar(255) DEFAULT NULL,
+`editeur` varchar(255) DEFAULT NULL,
+`prix` float DEFAULT NULL,
+`description` varchar(5000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -123,8 +121,8 @@ INSERT INTO `jeux` (`id`, `nom`, `editeur`, `prix`, `description`) VALUES
 --
 
 CREATE TABLE `link_categorie_jeux` (
-  `id_categorie` int(11) DEFAULT NULL,
-  `id_jeux` int(11) DEFAULT NULL
+`id_categorie` int(11) DEFAULT NULL,
+`id_jeux` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -144,9 +142,9 @@ INSERT INTO `link_categorie_jeux` (`id_categorie`, `id_jeux`) VALUES
 --
 
 CREATE TABLE `link_utilisateur_score` (
-  `id_utilisateur` int(11) DEFAULT NULL,
-  `id_critiques` int(11) DEFAULT NULL,
-  `value` int(11) DEFAULT NULL
+`id_utilisateur` int(11) DEFAULT NULL,
+`id_critiques` int(11) DEFAULT NULL,
+`value` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -177,11 +175,11 @@ INSERT INTO `link_utilisateur_score` (`id_utilisateur`, `id_critiques`, `value`)
 --
 
 CREATE TABLE `reponses` (
-  `id` int(11) NOT NULL,
-  `content` varchar(5000) DEFAULT NULL,
-  `id_auteur` int(11) DEFAULT NULL,
-  `id_reponse` int(11) DEFAULT NULL,
-  `id_critiques` int(11) DEFAULT NULL
+`id` int(11) NOT NULL,
+`content` varchar(5000) DEFAULT NULL,
+`id_auteur` int(11) DEFAULT NULL,
+`id_reponse` int(11) DEFAULT NULL,
+`id_critiques` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -204,15 +202,15 @@ INSERT INTO `reponses` (`id`, `content`, `id_auteur`, `id_reponse`, `id_critique
 --
 
 CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
-  `pseudo` varchar(255) DEFAULT NULL,
-  `mdp` varchar(255) DEFAULT NULL,
-  `nom` varchar(255) DEFAULT NULL,
-  `prenom` varchar(255) DEFAULT NULL,
-  `bio` varchar(5000) DEFAULT NULL,
-  `date_de_naissance` date DEFAULT NULL,
-  `date_de_creation` date DEFAULT current_timestamp(),
-  `email` varchar(255) DEFAULT NULL
+`id` int(11) NOT NULL,
+`pseudo` varchar(255) DEFAULT NULL,
+`mdp` varchar(255) DEFAULT NULL,
+`nom` varchar(255) DEFAULT NULL,
+`prenom` varchar(255) DEFAULT NULL,
+`bio` varchar(5000) DEFAULT NULL,
+`date_de_naissance` date DEFAULT NULL,
+`date_de_creation` date DEFAULT current_timestamp(),
+`email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -238,55 +236,57 @@ INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `bio`, `date_
 -- Index pour la table `amis`
 --
 ALTER TABLE `amis`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`),
+ADD KEY `id1` (`id1`),
+ADD KEY `id2` (`id2`);
 
 --
 -- Index pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `critiques`
 --
 ALTER TABLE `critiques`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_utilisateur` (`id_utilisateur`),
-  ADD KEY `id_jeu` (`id_jeu`);
+ADD PRIMARY KEY (`id`),
+ADD KEY `id_utilisateur` (`id_utilisateur`),
+ADD KEY `id_jeu` (`id_jeu`);
 
 --
 -- Index pour la table `jeux`
 --
 ALTER TABLE `jeux`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `link_categorie_jeux`
 --
 ALTER TABLE `link_categorie_jeux`
-  ADD KEY `id_categorie` (`id_categorie`),
-  ADD KEY `id_jeux` (`id_jeux`);
+ADD KEY `id_categorie` (`id_categorie`),
+ADD KEY `id_jeux` (`id_jeux`);
 
 --
 -- Index pour la table `link_utilisateur_score`
 --
 ALTER TABLE `link_utilisateur_score`
-  ADD KEY `id_utilisateur` (`id_utilisateur`),
-  ADD KEY `id_critiques` (`id_critiques`);
+ADD KEY `id_utilisateur` (`id_utilisateur`),
+ADD KEY `id_critiques` (`id_critiques`);
 
 --
 -- Index pour la table `reponses`
 --
 ALTER TABLE `reponses`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_reponse` (`id_reponse`),
-  ADD KEY `id_critiques` (`id_critiques`);
+ADD PRIMARY KEY (`id`),
+ADD KEY `id_reponse` (`id_reponse`),
+ADD KEY `id_critiques` (`id_critiques`);
 
 --
 -- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`);
+ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -296,27 +296,48 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `amis`
 --
 ALTER TABLE `amis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `jeux`
 --
 ALTER TABLE `jeux`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `reponses`
 --
 ALTER TABLE `reponses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `amis`
+--
+ALTER TABLE `amis`
+ADD CONSTRAINT `amis_ibfk_1` FOREIGN KEY (`id1`) REFERENCES `utilisateur` (`id`),
+ADD CONSTRAINT `amis_ibfk_2` FOREIGN KEY (`id2`) REFERENCES `utilisateur` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE messages (
+  'id' INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  'id_amis' INT(11) NOT NULL,
+  'sender' BOOLEAN,
+  'datetime' DATETIME DEFAULT current_timestamp(),
+  'content' VARCHAR(255),
+
+  ADD CONSTRAINT FOREIGN KEY id_amis REFERENCES amis.id
+);

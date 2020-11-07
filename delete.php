@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--This file is a form used to ask the user if he really wants to delete its profile-->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
