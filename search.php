@@ -27,12 +27,13 @@
         </select><br/><br/>
         </form>
             <?php
+
             if(!empty($_POST['tris'])) $t = $_POST['tris'];
 
             /**************Games sorted by price*******************************************/
 
             if(empty($t) || $t == "prix"){
-              $jeux = $db->prepare("SELECT nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY jeux.prix;");
+              $jeux = $db->prepare("SELECT nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie OR '$recherche' = substr(jeux.nom,0,3)) ORDER BY jeux.prix;");
               $jeux->execute();
               $line = $jeux->fetch();
             }
@@ -54,7 +55,7 @@
         $tmp2 = $users->fetch();
 
         /******************Displaying results**********************************/
-
+        if($recherche != ""){
         $in = FALSE; //To avoid displaying the same game several times
         $test = NULL; //To avoid displaying the same game several times
         while($line){
@@ -114,6 +115,7 @@
           echo ("- $prenom $nom</br></br>");
           $tmp2 = $users->fetch();
         }
+      }
         ?>
     </div>
   </body>
