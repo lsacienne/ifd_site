@@ -31,4 +31,22 @@
       $line= $req->fetch();
     }
   }
+
+  function deleteComsFromUser($id,$idPreviousCom,$db){
+    if($idPreviousCom == NULL){
+      $sql ='SELECT id FROM reponses WHERE id_auteur='.$id.' AND id_reponse IS NULL';
+      echo($sql);
+    }else{
+      $sql ='SELECT id FROM reponses WHERE id_reponse = '.$idPreviousCom;
+    }
+    $req = $db->prepare($sql);
+    $req->execute();
+    $line = $req->fetch();
+    echo($line['id']);
+    while($line){
+      deleteComsFromUser($id,$line['id'],$db);
+      $db->query('DELETE FROM reponses WHERE id='.$line['id']);
+      $line= $req->fetch();
+    }
+  }
 ?>
