@@ -90,11 +90,11 @@
         /***********Displaying the game********************/
           if((!$in)){
             ?>
-          </br></br><a href="home.php"><img src="<?=$nom?>.jpg" alt="Image" height="80" width = "80"> </a><br/>
+          </br><a href="home.php"><img src="<?=$nom?>.jpg" alt="Image" height="80" width = "80"> </a><br/>
           <?php
             $in = TRUE;
-            echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
-            echo("Par $editeur - $prix euros</br></br>");
+            echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br>');
+            echo("Par $editeur - $prix euros</br>");
             echo ("$categorie</br>");
           }
           $line = $jeux->fetch();
@@ -110,9 +110,9 @@
           $prenom = $tmp2['prenom'];
 
           ?>
-          <a href="profile.php?id=<?=$tmp2['id']?>"><?=$pseudo?> </a>
+          <br /><a href="profile.php?id=<?=$tmp2['id']?>"><?=$pseudo?> </a>
           <?php
-          echo ("- $prenom $nom</br></br>");
+          echo ("- $prenom $nom");
           $tmp2 = $users->fetch();
         }
       }
