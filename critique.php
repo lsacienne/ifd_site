@@ -22,51 +22,76 @@
         $critique = $req->fetch();
         //display the review data
         echo('
-          <h1>'.$critique['crit_name'].'</h1>
-          <b>Critique de<a href="profile.php?id='.$critique['user_id'].'"> '. $critique['pseudo'].' </a>sur : <a href="game.php?id='.$critique['game_id'].'">'.$critique['game_name'].'</a></b>
-          Réalisé le '.$critique['date_crit'].'</p>
-          <p>
-          '.nl2br($critique['content']).'
-          </p>
-          <h1>Note : '.$critique['note'].'/10</h1>
+          <div class="rubrique">
+              <div class="titre_rubrique">'.$critique['crit_name'].'</div></br>
+              <p class="right"><b>Critique de<a href="profile.php?id='.$critique['user_id'].'"> '. $critique['pseudo'].' </a>sur : <a href="game.php?id='.$critique['game_id'].'">'.$critique['game_name'].'</a></b>
+              Réalisé le '.$critique['date_crit'].'</p></br>
+              <p class="texte_corps">
+              '.nl2br($critique['content']).'
+              </p>');
+        if($critique['note']>=5){
+            echo('
+                <div class="note good" >Note : '.$critique['note'].'/10</div>
+          </div>
+            ');
+        } else {
+            echo('
+                <div class="note bad">Note : '.$critique['note'].'/10</div>
+          </div>
         ');
+        }
+        /* SYSTEME DE UPVOTE */
+
+        echo '<div class="menu_upvote">';
+
         //get the sum of all the votes for this review
+
         $sql = 'SELECT SUM(value) AS value FROM link_utilisateur_score WHERE id_critiques ='.$id;
         $req = $db->prepare($sql);
         $req->execute();
         $upvotes = $req->fetch();
+
         //display the number of upvotes
-        echo('<h3><b>Upvotes: '.(0+$upvotes['value']).'</b><br/>');
+        echo('<b>Upvotes:</b>  ');
+       
         //check if the user upvoted/downvoted this post
         $sql = 'SELECT value FROM link_utilisateur_score WHERE id_critiques ='.$id.' AND id_utilisateur='.$_SESSION['id'].';';
         $req = $db->prepare($sql);
         $req->execute();
         $uservote = $req->fetch();
-        $textPlus = "+";
-        $textMinus = "-";
+
+        $textPlus = "<button class='up_down'>+</button>";
+        $textMinus = "<button class='up_down'>-</button>";
+
         //change the way things are displayed depending if the user upvoted/downvoted/did nothing
         if(isset($uservote['value'])){
           if($uservote['value']==1){
-            $textPlus="<mark>+</mark>";
+            $textPlus="<button class='up_down up'>+</button>";
           }else{
-            $textMinus="<mark>-</mark>";
+            $textMinus="<button class='up_down down'>-</button>";
           }
         }
+        
         //display links to allow the user to upvote/downvote/delete its vote
-        echo '<a href = "update_votes.php?value=1&id='.$id.'">'.$textPlus.'<a/> / <a href = "update_votes.php?value=0&id='.$id.'">0<a/> / <a href = "update_votes.php?value=-1&id='.$id.'">'.$textMinus.'<a/></h3>';
-        echo '<h3><b>Commentaires:</b></h3>';
+        echo '<a href = "update_votes.php?value=1&id='.$id.'">'.$textPlus.'</a> <a href = "update_votes.php?value=-1&id='.$id.'">'.$textMinus.'</a><b>'.(0+$upvotes['value']).' </b></div>';
+        echo '<div class="commentaire"><b class="titre">Commentaires:</b><br/>';
+        
     //form to enter a new comment
+
     ?>
-    <form method="post" action="add_comment.php?id=<?php echo($_GET['id'])?>">
-      <label for="input">Commentaire:</label>
-      <input type="text" name="input" maxlength="100" size="50">
-      <button type="submit">></button>
-    </form>
+                <br/>
+                <form method="post" action="add_comment.php?id=<?php echo($_GET['id'])?>">
+                  <label for="input"></label>
+                  <input type="text" name="input" maxlength="100" size="80" placeholder="Ecrire un commentaire...">
+                  <button type="submit">></button>
+                </form>
+
     <?php
         //print the commments
         printComs($id,NULL,0,$db);
       }
     ?>
+            </div>
     </div>
   </body>
 </html>

@@ -62,6 +62,10 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     font-size:0.8em;
 }
 
+input[type=text]{
+    padding-left: 0.4em;
+    border: solid black 0.1em;
+}
 
 /*********** classe ************/
 
@@ -105,11 +109,6 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     border-top-right-radius: 0.5em 0.5em;
     border-bottom-right-radius: 0.5em 0.5em;
     border-bottom-left-radius: 0.5em 0.5em;
-}
-
-/* centrer l'image */
-.img {
-    text-align: center;
 }
 
 /* css pour placer la barre de recherche sur les pages */
@@ -210,6 +209,13 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     font-size:3em;
 }
 
+.corps img{
+    border: solid black 0.4em;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
 
 .texte_corps{
     margin:1em;
@@ -279,17 +285,141 @@ i.crit_com{
 }
 
 .corps a:link {
-    color:darkslategray;
+    color:midnightblue;
     font-weight: bolder;
     text-decoration: none;
 }
 
 .corps a:visited{
-    color:darkslategray;
+    color:midnightblue;
+}
+
+.rubrique .right{
+    text-align:right;
+    position:relative;
+}
+
+.rubrique .note{
+    text-align:right;
+    font-size:1.5em;
+    font-weight:bold;
+}
+
+.rubrique .note.bad{
+    color:royalblue;
+}
+.rubrique .note.good{
+    color:orangered;
 }
 
 
+/* les boutons de upvote */
 
+.menu_upvote{
+    margin:2em;
+}
+
+button.up_down{
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+    background-color:rgba(0,0,0,0.20);
+    margin:0.2em;
+    font-weight: bolder;
+    color:black;
+    width:1.8em;
+    height:1.8em;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+    border:none;
+    font-size:0.8em;
+}
+
+button.up_down.up{
+    background:orangered;
+    color:white;
+}
+
+button.up_down.down{
+    background:royalblue;
+    color:white;
+}
+
+/* le css lié aux commentaires */
+
+.commentaire .titre{
+    margin-left:2em;
+}
+.commentaire{
+    margin-left:2em;
+}
+
+.commentaire button{
+    width:3em;
+    height:1.7em;
+    padding-top:0;
+    font-weight: bolder;
+    font-size:1em;
+    color:white;
+    border: thin dotted whitesmoke;
+    background-color: midnightblue;
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+}
+
+.commentaire input{
+    height:1.5em;
+
+}
+
+.commentaire a:link{
+    font-weight: normal;
+    margin:0;
+}
+
+
+/* le css lié aux pages de jeux */
+
+.page_jeux{
+    margin-left:2em;
+}
+
+.page_jeux .presentation_generale{
+    padding: 0.5em;
+    border-width:0.4em;
+    border-color:black;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.page_jeux .titre{
+    font-weight:bold;
+    font-size:3em;
+    text-align:center;
+}
+
+.page_jeux .sous_titre{
+    font-weight:bold;
+    font-size:1.8em;
+    text-align:left;
+}
+
+.page_jeux table{
+    padding: 0.5em;
+    border-spacing:0.5em;
+    width:65em;
+    text-align: center;
+    border-color:black;
+    border-style:solid;
+    border-collapse: separate;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.page_jeux table td{
+    text-align:center;
+}
 
 /* le header de chaque page */
 

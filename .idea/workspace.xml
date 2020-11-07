@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2720ac6c-5302-46b3-870f-58d505a2a3c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.php" beforeDir="false" afterPath="$PROJECT_DIR$/game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style_site.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usert.php" beforeDir="false" afterPath="$PROJECT_DIR$/usert.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +42,9 @@
       <workItem from="1604524388890" duration="2987000" />
       <workItem from="1604574188658" duration="1389000" />
       <workItem from="1604581558497" duration="730000" />
-      <workItem from="1604596562891" duration="6204000" />
+      <workItem from="1604596562891" duration="19528000" />
+      <workItem from="1604670404876" duration="4686000" />
+      <workItem from="1604751296353" duration="4264000" />
     </task>
     <servers />
   </component>
@@ -59,6 +60,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="163" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1604505725334" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1604611866273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1604611866273" />
     <state x="1045" y="311" width="672" height="678" key="search.everywhere.popup" timestamp="1604512383545">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="style_site.css">
 <?php
   //recursive function printing the comments
   function printComs($idCrit,$idPreviousCom,$layer,$db){
@@ -15,7 +16,7 @@
     //display every comment, one by one
     while($line){
       echo(str_repeat("|&nbsp&nbsp&nbsp&nbsp",$layer).'|<br/>');
-      echo(str_repeat("|&nbsp&nbsp&nbsp&nbsp",$layer).'<a href="profile.php?id='.$line['uid'].'"><b>[ '.$line['pseudo'].'</b></a> : <a href="reply_input.php?id='.$line['id'].'">'.$line['content'].'</a><br/>');
+      echo(str_repeat("|&nbsp&nbsp&nbsp&nbsp",$layer).'<a class="commentaire" href="profile.php?id='.$line['uid'].'"><b>[ '.$line['pseudo'].'</b></a> : <a href="reply_input.php?id='.$line['id'].'">'.$line['content'].'</a><br/>');
       //diplay the comment with some | and some tabs so it looks like:
       //
       //  [ User1 : text 1

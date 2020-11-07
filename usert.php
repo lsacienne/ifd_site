@@ -29,13 +29,14 @@
                   $user_check[] = $data[$i]['pseudo_2'];
 
                   if($data[$i]['attente'] == true)
-                    echo " (en attente d'être acceptée)</br>";
+                    echo " (en attente d'être acceptée)";
                 }else{
                   if($data[$i]['attente'] == false){
                     echo $data[$i]['pseudo_1'] . "<a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a>";
                       $user_check[] = $data[$i]['pseudo_1'];
                   }
                 }
+                echo '</br>';
               }
               echo '</br>';
              ?>
@@ -48,6 +49,7 @@
                 echo $data[$i]['pseudo_1'] . "<a href='friend_action.php?action=accept&id=".$data[$i]['ida']." '> Accepter</a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '>Refuser</a>";
                 $user_check[] = $data[$i]['pseudo_1'];
               }
+              echo '</br>';
             }
 
 
