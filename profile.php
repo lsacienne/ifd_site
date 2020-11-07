@@ -19,23 +19,21 @@
         <?php
           include 'header.php';
 
-            /*****************Friend request***************/
-            echo '</br></br></br>';
-            $id = $_GET['id'];
-            $req2 = $db->query("SELECT * FROM utilisateur;");
-            $data = $req2->fetchALL();
-
-            for ($i=0; $i < sizeof($data) ; $i++) {
-              if( (!in_array($data[$i]['pseudo'],$user_check)) && ($data[$i]['id'] == $id) ){
-                echo  "<a href='friend_action.php?action=add&id=".$data[$i]['id']." '> Demander en ami</a></br>";
-              }
-            }
-
-
           /************************************************/
           echo('
             <div class="corps">
-                <div class="titre_page">'.$usr['pseudo'].'</div>
+                <div class="titre_page">'.$usr['pseudo'].'</div>');
+        /*****************Friend request***************/
+        $id = $_GET['id'];
+        $req2 = $db->query("SELECT * FROM utilisateur;");
+        $data = $req2->fetchALL();
+
+        for ($i=0; $i < sizeof($data) ; $i++) {
+            if( (!in_array($data[$i]['pseudo'],$user_check)) && ($data[$i]['id'] == $id) ){
+                echo  "<div class='demande_ami'><a href='friend_action.php?action=add&id=".$data[$i]['id']." '> Demander en ami</a></div>";
+            }
+        }
+          echo('
                 <div class="rubrique">
                     <h2>'.$usr['prenom'].' '.$usr['nom'].'</h2><b> - Membre depuis le '.$usr['date_de_creation'].'</b><br/>
                     <br><i class="bio">'.nl2br($usr['bio']).'<i/>
