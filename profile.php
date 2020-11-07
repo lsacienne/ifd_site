@@ -27,7 +27,7 @@
 
             for ($i=0; $i < sizeof($data) ; $i++) {
               if( (!in_array($data[$i]['pseudo'],$user_check)) && ($data[$i]['id'] == $id) ){
-                echo $data[$i]['pseudo'] . "<a href='friend_action.php?action=add&id=".$data[$i]['id']." '> Demander en ami</a></br>";
+                echo  "<a href='friend_action.php?action=add&id=".$data[$i]['id']." '> Demander en ami</a></br>";
               }
             }
 
