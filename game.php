@@ -10,7 +10,8 @@
       if (!(isset($_GET['id']))){
         echo("<h1>Cette page n'existe pas, sorry bebou</h1>");
       }else{
-        echo'<div class="corps">';
+        echo'<div class="corps"><div class="page_jeux">             
+        ';
         $id = $_GET['id'];
         $db = new PDO( "mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
         $sql = "SELECT id,nom,editeur,prix,description FROM jeux WHERE id='$id';";
@@ -22,7 +23,8 @@
         $prix = $game['prix'];
         $description = $game['description'];
         if($game){
-          echo("<h1>$nom</h1><br/>");
+          echo('<div class="presentation_generale">');
+          echo("<div class='titre'>$nom</div><br/>");
           echo("<b>Editeur: </b>$editeur<br/>");
           echo("<b>Prix: </b>$prix €<br/>");
           echo("<b>Description: </b>$description<br/>");
@@ -31,7 +33,8 @@
           $req2->execute();
           $line = $req2->fetch();
           echo"
-            <h1>Critiques:</h1>
+            </div></br>
+            <div class='sous_titre'>Critiques:</div></br>
             <table style=\"border: 1px solid black\">
             <tr>
               <th>Par</th>
@@ -52,7 +55,7 @@
             $line = $req2->fetch(); //passer à la ligne suivante
           }
           echo "</table>";
-          echo'</div>';
+          echo'</div></div>';
         }else{
           echo("<h1>Cette page n'existe pas, sorry bebou</h1>");
         }

@@ -111,11 +111,6 @@ input[type=text]{
     border-bottom-left-radius: 0.5em 0.5em;
 }
 
-/* centrer l'image */
-.img {
-    text-align: center;
-}
-
 /* css pour placer la barre de recherche sur les pages */
 .barre_recherche{
     position:absolute;
@@ -214,6 +209,13 @@ input[type=text]{
     font-size:3em;
 }
 
+.corps img{
+    border: solid black 0.4em;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
 
 .texte_corps{
     margin:1em;
@@ -369,6 +371,54 @@ button.up_down.down{
 .commentaire a:link{
     font-weight: normal;
     margin:0;
+}
+
+
+/* le css lié aux pages de jeux */
+
+.page_jeux{
+    margin-left:2em;
+}
+
+.page_jeux .presentation_generale{
+    padding: 0.5em;
+    border-width:0.4em;
+    border-color:black;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.page_jeux .titre{
+    font-weight:bold;
+    font-size:3em;
+    text-align:center;
+}
+
+.page_jeux .sous_titre{
+    font-weight:bold;
+    font-size:1.8em;
+    text-align:left;
+}
+
+.page_jeux table{
+    padding: 0.5em;
+    border-spacing:0.5em;
+    width:65em;
+    text-align: center;
+    border-color:black;
+    border-style:solid;
+    border-collapse: separate;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.page_jeux table td{
+    text-align:center;
 }
 
 /* le header de chaque page */
