@@ -72,7 +72,7 @@ input[type=text]{
 
 /* background des pages "classiques" du site */
 .cover {
-    background: linear-gradient(55deg, rgba(206,200,226,1),rgba(168,145,205,1),rgba(120,100,177,1),rgba(87,60,157,1),rgba(46,13,134,1));
+    background: linear-gradient(55deg,  #d973ff 0, #955cff 25%, #4d42d4 50%, #00299e 90%, #00146f 100%);
     background-size: cover;
     background-attachment: fixed;
 }
