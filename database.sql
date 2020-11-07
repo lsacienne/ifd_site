@@ -30,10 +30,10 @@ USE projetifd;
 --
 
 CREATE TABLE `amis` (
-`id` int(11) NOT NULL,
-`id1` int(11) NOT NULL,
-`id2` int(11) NOT NULL,
-`attente` tinyint(1) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id1` int(11) NOT NULL,
+  `id2` int(11) NOT NULL,
+  `attente` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -240,6 +240,7 @@ ADD PRIMARY KEY (`id`),
 ADD KEY `id1` (`id1`),
 ADD KEY `id2` (`id2`);
 
+
 --
 -- Index pour la table `categorie`
 --
@@ -298,11 +299,13 @@ ADD PRIMARY KEY (`id`);
 ALTER TABLE `amis`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
+
 --
 -- AUTO_INCREMENT pour la table `jeux`
 --
 ALTER TABLE `jeux`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 
 --
 -- AUTO_INCREMENT pour la table `reponses`
@@ -310,11 +313,13 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 ALTER TABLE `reponses`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
+
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 
 --
 -- Contraintes pour les tables déchargées
@@ -326,7 +331,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 ALTER TABLE `amis`
 ADD CONSTRAINT `amis_ibfk_1` FOREIGN KEY (`id1`) REFERENCES `utilisateur` (`id`),
 ADD CONSTRAINT `amis_ibfk_2` FOREIGN KEY (`id2`) REFERENCES `utilisateur` (`id`);
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
