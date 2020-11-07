@@ -25,14 +25,14 @@
               for ($i=0; $i < sizeof($data) ; $i++) {
                 if($data[$i]['pseudo_1'] == $_SESSION['pseudo']){
 
-                  echo "</br><a href='chat.php?id=".$data[$i]['id2']."&num=15' >" . $data[$i]['pseudo_2'] . " </a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']."  '> Supprimer</a>";
+                  echo "</br><a href='chat.php?id=".$data[$i]['ida']."&num=15' >" . $data[$i]['pseudo_2'] . " </a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']."  '> Supprimer</a>";
                   $user_check[] = $data[$i]['pseudo_2'];
 
                   if($data[$i]['attente'] == true)
                     echo " (en attente d'être acceptée)";
                 }else{
                   if($data[$i]['attente'] == false){
-                    echo "</br><a href='chat.php?id=".$data[$i]['id1']."&num=15' >".  $data[$i]['pseudo_1'] . "</a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a></br>";
+                    echo "</br><a href='chat.php?id=".$data[$i]['ida']."&num=15' >".  $data[$i]['pseudo_1'] . "</a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a></br>";
                       $user_check[] = $data[$i]['pseudo_1'];
                   }
                 }
