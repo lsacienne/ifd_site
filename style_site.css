@@ -185,6 +185,7 @@ input[type=text]{
 
 
 
+
 /* corps du texte pour toutes les pages*/
 
 /*l'espace pour mettre le texte*/
@@ -201,6 +202,11 @@ input[type=text]{
     border-top-right-radius: 0.5em 0.5em;
     border-bottom-right-radius: 0.5em 0.5em;
     border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.demande_ami{
+    text-align: right;
+    margin-right: 2em;
 }
 
 .titre_page{
@@ -261,6 +267,7 @@ li.rubrique{
     position:relative;
     background-color: rgba(255,255,255,0.69);
 }
+
 
 
 

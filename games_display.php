@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="cover">
 <head>
   <meta charset="utf-8">
   <title>Homepage</title>
 </head>
 <body>
+
 <?php
   include 'header.php';
-
+  echo'<div class="corps">';
   $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
   $jeux = $db->prepare("SELECT nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie ;");
   $jeux->execute();
@@ -15,6 +16,7 @@
 
   $in = FALSE; //To avoid displaying the same game several times
   $test = NULL; //To avoid displaying the same game several times
+
   while($line){
       $nom = $line['nom'];
       $editeur = $line['editeur'];
@@ -43,16 +45,15 @@
       $in = FALSE;
       $test  = $nom;
     }
-
   /***********Displaying the game********************/
     if((!$in)){
       ?>
-    </br></br><a href="home.php"><img src="<?=$nom?>.jpg" alt="Image" height="80" width = "80"> </a><br/>
+        </br><a href="home.php"><img src="<?=$nom?>.jpg" alt="Image" height="80" width = "80"> </a><br/>
     <?php
       $in = TRUE;
-      echo('<b>'. $nom . '</b>' . ' - ' . round($tmp3['average'],1) . '/10' . '</br></br>');
-      echo("Par $editeur - $prix euros</br></br>");
-      echo ("$categorie</br>");
+      echo('<b>'. $nom . '</b>' . ' - ' . round($tmp3['average'],1) . '/10' . '</br>');
+      echo("Par $editeur - $prix euros</br>");
+      echo ("$categorie<br/>");
     }
     $line = $jeux->fetch();
 
@@ -63,6 +64,6 @@
 
 
 
-
+    </div>
 </body>
 </html>
