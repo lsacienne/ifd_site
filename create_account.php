@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<!--This file is a form for account creation-->
 <link rel="stylesheet" type="text/css" href="style_site.css">
 <html lang="en" dir="ltr" class="clogin">
 <?php
   session_start();
   if(isset($_SESSION['login']) && $_SESSION['login'] == true){
+    //send back the user to the homepage if he is allready logged in
     header('location: home.php');
   }
 ?>
@@ -43,6 +45,7 @@
   </div>
     <?php
       if(isset($_GET['failed'])){
+        //case where the username or mail entred by the user are allready used by another user
         echo("<br/>La création du compte a échoué :( essayez un autre pseudo/adresse email<br/>");
       }
      ?>

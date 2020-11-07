@@ -6,32 +6,38 @@
   </head>
   <body>
     <?php
+      //This file is used to display a specific game with its id sent through the url
       include 'header.php';
+      //check if the id was sent through succesfully
       if (!(isset($_GET['id']))){
-        echo("<h1>Cette page n'existe pas, sorry bebou</h1>");
+        echo("<h1>Cette page n'existe pas, sorry bebou</h1>");//to fix
       }else{
-        echo'<div class="corps"><div class="page_jeux">             
-        ';
+        echo'<div class="corps"><div class="page_jeux">';
+
+        //get the game's data from the table
+
         $id = $_GET['id'];
         $db = new PDO( "mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
         $sql = "SELECT id,nom,editeur,prix,description FROM jeux WHERE id='$id';";
         $req = $db->prepare($sql);
         $req->execute();
         $game = $req->fetch();
-        $nom = $game['nom'];
-        $editeur = $game['editeur'];
-        $prix = $game['prix'];
-        $description = $game['description'];
+        //check is the game exists (==if the id was indeed the id of a game)
         if($game){
+
+          //display the informations about the game
           echo('<div class="presentation_generale">');
-          echo("<div class='titre'>$nom</div><br/>");
-          echo("<b>Editeur: </b>$editeur<br/>");
-          echo("<b>Prix: </b>$prix €<br/>");
-          echo("<b>Description: </b>$description<br/>");
+          echo("<div class='titre'>".$game['nom']."</div><br/>");
+          echo("<b>Editeur: </b>".$game['editeur']."<br/>");
+          echo("<b>Prix: </b>".$game['prix']." €<br/>");
+          echo("<b>Description: </b>".$game['description']."<br/>");
+
+          //get some data for all the review for the game
           $sql = "SELECT critiques.id AS crit_id,critiques.nom AS nom,pseudo,date_crit,note FROM utilisateur INNER JOIN critiques ON utilisateur.id = critiques.id_utilisateur WHERE critiques.id_jeu = $id";
           $req2 = $db->prepare($sql);
           $req2->execute();
           $line = $req2->fetch();
+          //display this data in a table
           echo"
             </div></br>
             <div class='sous_titre'>Critiques:</div></br>
@@ -57,7 +63,8 @@
           echo "</table>";
           echo'</div></div>';
         }else{
-          echo("<h1>Cette page n'existe pas, sorry bebou</h1>");
+          //display an error message if the id was wrong
+          echo("<h1>Cette page n'existe pas, sorry bebou</h1>");// to fix
         }
       }
     ?>
