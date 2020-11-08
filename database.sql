@@ -17,6 +17,7 @@ CREATE TABLE jeux (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nom VARCHAR(30),
   editeur VARCHAR(30),
+  picture LONGBLOB,
   prix FLOAT,
   description VARCHAR(5000)
 );
@@ -100,7 +101,7 @@ INSERT INTO `utilisateur` (`id`, `pseudo`, `mdp`, `nom`, `prenom`, `bio`, `DATE_
 (9, 'zer67', '$2y$08$qXWOpnFYMckm68gPAnrU9Oa7MGmiM9ly00YeH3.1Yj4d3L.EC4Qu6', 'Viala', 'Alexandre', 'J\'adore linksthesun et le métal.', '2001-03-10', '2020-11-05', 'algator67@hotmail.fr'),
 (10, 'brbr', '$2y$08$nqSsmcKHZOQzvKza3AIMmOqdrjUt3eXIgCaI0FWwYsS3WdyiY9Ewa', 'prpr', 'br', 'born in the corona year fuck yeah !', '2020-04-05', '2020-11-05', 'brbr@prpr.cmr');
 
-INSERT INTO `jeux` (`id`, `nom`, `editeur`, `prix`, `description`) VALUES
+INSERT INTO `jeux` (`id`, `nom`, `editeur`,`prix`, `description`) VALUES
 (1, 'Uno', 'Mattel', 7.5, 'description 1'),
 (2, 'Munchkin', 'Edge Entertainement', 19.99, 'description 2');
 

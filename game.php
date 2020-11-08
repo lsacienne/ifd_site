@@ -18,7 +18,7 @@
 
         $id = $_GET['id'];
         $db = new PDO( "mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
-        $sql = "SELECT id,nom,editeur,prix,description FROM jeux WHERE id='$id';";
+        $sql = "SELECT id,nom,editeur,prix,description,picture FROM jeux WHERE id='$id';";
         $req = $db->prepare($sql);
         $req->execute();
         $game = $req->fetch();
@@ -28,11 +28,24 @@
           //display the informations about the game
           echo('<div class="presentation_generale">');
           echo("<div class='titre'>".$game['nom']."</div><br/>");
+          echo('</br><img src="data:image/jpeg;base64, '.base64_encode($game['picture']).'" height="120" name="image"/><br/>');
           echo("<b>Editeur: </b>".$game['editeur']."<br/>");
           echo("<b>Prix: </b>".$game['prix']." €<br/>");
           echo("<b>Description: </b>".$game['description']."<br/>");
 
           //get some data for all the review for the game
+          //get the categories
+          $categories = $db->prepare("SELECT nom_categorie FROM link_categorie_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie WHERE link_categorie_jeux.id_jeux =".$game['id']);
+          $categories->execute();
+          $categorie = "";
+          $tmp2= $categories->fetch();
+          /************Concatenating categories' name**********************/
+          while($tmp2){
+            $categorie = $categorie . ' / ' . $tmp2['nom_categorie'];
+            $tmp2 = $categories->fetch();
+          }
+          echo("<b>Catégories: </b>".$categorie."<br/>");
+
           $sql = "SELECT critiques.id AS crit_id,critiques.nom AS nom,pseudo,date_crit,note FROM utilisateur INNER JOIN critiques ON utilisateur.id = critiques.id_utilisateur WHERE critiques.id_jeu = $id";
           $req2 = $db->prepare($sql);
           $req2->execute();

@@ -33,7 +33,8 @@
             /**************Games sorted by price*******************************************/
 
             if(empty($t) || $t == "prix"){
-              $jeux = $db->prepare("SELECT nom,prix,editeur,nom_categorie, jeux.id AS id FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie OR '$recherche' = substr(jeux.nom,0,3)) ORDER BY jeux.prix;");
+
+              $jeux = $db->prepare("SELECT jeux.id AS game_id,nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie OR '$recherche' = substr(jeux.nom,0,3)) ORDER BY jeux.prix;");
               $jeux->execute();
               $line = $jeux->fetch();
             }
@@ -42,7 +43,9 @@
             /********Games sorted by note**********************/
             if(!empty($t) && $t == "note"){
 
-              $jeux = $db->prepare("SELECT DISTINCT jeux.nom,prix,editeur,nom_categorie,jeux.id AS id FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN critiques ON critiques.id_jeu = jeux.id WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id) DESC;");
+
+
+              $jeux = $db->prepare("SELECT DISTINCT jeux.nom,jeux.id AS game_id,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN critiques ON critiques.id_jeu = jeux.id WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id) DESC;");
               $jeux->execute();
               $line = $jeux->fetch();
           }
@@ -90,12 +93,9 @@
 
         /***********Displaying the game********************/
           if((!$in)){
-            ?>
-          </br><a href="game.php?id=<?=$jeux_id?>"><img src="<?=$nom?>.jpg" alt="Image" height="80" width = "80"> </a><br/>
-          <?php
             $in = TRUE;
-            echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br>');
-            echo("Par $editeur - $prix euros</br>");
+            echo('<a href="game.php?id='.$line['game_id'].'"><b>'. $nom . '</b></a>' . ' - ' . round($tmp['average'],1) . '/10 - ');
+            echo("Par $editeur - $prix € - ");
             echo ("$categorie</br>");
           }
           $line = $jeux->fetch();
