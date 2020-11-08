@@ -19,6 +19,7 @@
                     <li><a href="games_display.php">Tout les jeux</a></li>
                     <li><a href="random.php?content=1">Découvrir un jeu</a></li>
                     <li><a href="#">Rechercher un jeu</a></li>
+                    <li><a href="input_game.php">Ajouter un jeu</a></li>
 
                     <li><div class="title">Critiques</div></li>
                     <li><a href="last.php">Dernière critique</a></li>

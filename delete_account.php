@@ -31,7 +31,7 @@ if($_GET['confirm']!=1){//silly security measure to avoid deleting the account u
     $db->query("DELETE FROM amis WHERE id =".$amis['id']);
     $amis = $req->fetch();
   }
-  
+
   //Delete the user
   $sql = 'DELETE FROM utilisateur WHERE id='.$id;
   $req = $db->prepare($sql);
