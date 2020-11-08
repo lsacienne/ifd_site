@@ -65,7 +65,7 @@
             $nom = $line['nom'];
             $editeur = $line['editeur'];
             $prix = $line['prix'];
-            $jeux_id = $line['id']; // Game id
+            $jeux_id = $line['game_id']; // Game id
 
             /************Query for getting the game's categories**************/
             $categories = $db->prepare("SELECT nom_categorie FROM categorie INNER JOIN link_categorie_jeux ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN jeux ON link_categorie_jeux.id_jeux = jeux.id WHERE jeux.nom = '$nom';");

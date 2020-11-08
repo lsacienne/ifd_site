@@ -49,7 +49,7 @@
           if($toDisplay != $length){
             echo('
               <form method="post" action="chat.php?id='.$_GET['id'].'&num='.min($_GET['num']+10,$length).'">
-              <button type="submit" id="submit_corps">Voir 10 messsages précédent</button>
+              <button type="submit" id="submit_corps">Voir plus de messsages précédent</button>
               </form><br />
             ');
           }

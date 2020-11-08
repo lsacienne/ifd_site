@@ -29,6 +29,7 @@
 
                     <li><div class="title">'.$_SESSION['pseudo'].'</div></li>
                     <li><a href="profile.php?id='.$_SESSION['id'].'">Profil</a></li>
+                    <li><a href="stats.php">Statistiques du site</a></li>
                     <li><a href="logout.php">Se déconnecter</a></li>
                     <li><a href="delete.php">Supprimer son compte</a></li>
                   </ul>

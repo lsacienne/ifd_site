@@ -30,7 +30,7 @@ GROUP BY critiques.id ORDER BY date_crit DESC, up DESC");
                   $crit_display = str_split($line['contenu'],200);
                   echo '
                 <li class="rubrique">
-                    <div class="titre_rubrique">',$line['nom_critique'],'</div><br>
+                    <div class="titre_rubrique"><a href="critique.php?id= '.$line['crit'].'"><br>',$line['nom_critique'],'</a></div><br>
                     <div class="nom_auteur">par ',$line['pseudo'],'</div><br>
                     <p class="texte_corps">',$crit_display[0];
                   if(strlen($line['contenu'])>200){
