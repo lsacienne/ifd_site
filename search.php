@@ -25,7 +25,7 @@
           <strong>Catégories</strong></br><input type="radio" name="categorie" value="Carte" > Carte</br>
           <input type="radio" name="categorie" value="Chance" > Chance</br>
           <input type="radio" name="categorie" value="Humoristique" > Humoristique</br></br>
-          <button type="submit">Filtrer</button>
+          <button type="submit" id="submit_corps">Filtrer</button>
         </form></br>
 
         <form method="post" action="test.php" onChange="submit()">
