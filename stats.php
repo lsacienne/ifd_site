@@ -73,7 +73,9 @@
             <div class="background_graph_1">
                 <div class="rectangle_stat taille<?=percent($nb_games['nb_games'])['per']?>">
                     <?php
-                        echo $nb_games['nb_games'];
+                        if($nb_games['nb_games'] != 0){
+                            echo $nb_games['nb_games'];
+                        }
                     ?>
                 </div>
             </div>
@@ -92,13 +94,14 @@
             <div class="background_graph_1">
                 <div class="rectangle_stat taille<?=percent($nb_critics['nb_critics'])['per']?>">
                     <?php
-                        echo $nb_critics['nb_critics'] ;
+                        if($nb_critics['nb_critics']!=0){
+                            echo $nb_critics['nb_critics'] ;
+                        }
                     ?>
                 </div>
             </div>
         </div>
         <br />
-
 
         <br />
         <!-- Display the graph about the number of users on this site -->
@@ -111,11 +114,12 @@
                     echo percent($nb_users['nb_users'])['max'];
                 ?>
             </div>
-
-            <div class="background_graph_1 taille<?=percent($nb_users['nb_users'])['per']?>">
-                <div class="rectangle_stat">
+            <div class="background_graph_1">
+                <div class="rectangle_stat taille<?=percent($nb_users['nb_users'])['per']?>">
                     <?php
-                        echo $nb_users['nb_users'] ;
+                        if($nb_users['nb_users']!=0){
+                            echo $nb_users['nb_users'] ;
+                        }
                     ?>
                 </div>
             </div>
@@ -134,7 +138,9 @@
             <div class="background_graph_1">
                 <div class="rectangle_stat taille<?=percent($nb_messages['nb_messages'])['per']?>">
                     <?php
-                        echo $nb_messages['nb_messages'];
+                        if($nb_messages['nb_messages']!=0){
+                            echo $nb_messages['nb_messages'];
+                        }
                     ?>
                 </div>
             </div>
