@@ -10,7 +10,7 @@
       include 'header.php';
       //check if the id was sent through succesfully
       if (!(isset($_GET['id']))){
-        echo("<h1>Cette page n'existe pas, sorry bebou</h1>");//to fix
+        echo("<h1>Cette page n'existe pas</h1>");//to fix
       }else{
         echo'<div class="corps"><div class="page_jeux">';
 
