@@ -36,7 +36,9 @@
           echo('
                 <div class="rubrique">
                     <h2>'.$usr['prenom'].' '.$usr['nom'].'</h2><b> - Membre depuis le '.$usr['date_de_creation'].'</b><br/>
-                    <br><i class="bio">'.nl2br($usr['bio']).'<i/>
+                    <i>
+                        '.nl2br($usr['bio']).'
+                    <i/>
                     <br/>
                 </div>
                 <div class="rubrique">

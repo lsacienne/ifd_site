@@ -179,11 +179,11 @@ input[type=text],input[type=number]{
 }
 
 .liste_amis a:link{
-    color:darkslategray;
+    color:midnightblue;
 }
 
 .liste_amis a:visited{
-    color:darkslategray;
+    color:midnightblue;
 }
 
 
