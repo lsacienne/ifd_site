@@ -11,5 +11,5 @@
   $sql = "INSERT INTO messages(id_amis,sender,content) VALUES ('$id','$sender','$content')";
   $req = $db->prepare($sql);
   $req->execute();
-  header("location: chat.php?id=".$id."&num=20");//redirect the user to post where the comment is located
+  header("location: chat.php?id=".$id."&num=15");//redirect the user to post where the comment is located
 ?>
