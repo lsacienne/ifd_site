@@ -21,7 +21,7 @@
               echo'<ul class="home">';
 
               $req_critics = $db->prepare("SELECT critiques.id AS crit, date_crit,SUM(link_utilisateur_score.value) AS up,critiques.content AS contenu,critiques.nom AS nom_critique,jeux.nom AS nom_jeu,pseudo
-FROM critiques INNER JOIN link_utilisateur_score ON critiques.id = link_utilisateur_score.id_critiques INNER JOIN utilisateur ON link_utilisateur_score.id_utilisateur = utilisateur.id INNER JOIN jeux ON critiques.id_jeu = jeux.id
+FROM critiques INNER JOIN link_utilisateur_score ON critiques.id = link_utilisateur_score.id_critiques INNER JOIN utilisateur ON critiques.id_utilisateur = utilisateur.id INNER JOIN jeux ON critiques.id_jeu = jeux.id
 GROUP BY critiques.id ORDER BY date_crit DESC, up DESC");
 
               $req_critics->execute();
