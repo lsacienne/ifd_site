@@ -107,9 +107,9 @@
           $prenom = $tmp2['prenom'];
 
           ?>
-          <a href="profile.php?id=<?=$tmp2['id']?>"><?=$pseudo?> </a>
+          <br /><a href="profile.php?id=<?=$tmp2['id']?>"><?=$pseudo?> </a>
           <?php
-          echo ("- $prenom $nom</br></br>");
+          echo ("- $prenom $nom");
           $tmp2 = $users->fetch();
         }
       }

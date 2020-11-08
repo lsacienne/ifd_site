@@ -41,7 +41,7 @@
 
          <form method="post" action="search.php" class="barre_recherche" >
              <label for="recherche"></label>
-             <input name="recherche" type="text" placeholder="Rechercher un jeu..."/>
+             <input name="recherche" type="text" placeholder="Rechercher un jeu ou un utilisateur..."/>
              <button type="submit">Rechercher</button>
          </form>
         ';

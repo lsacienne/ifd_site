@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="cover">
   <head>
     <meta charset="utf-8">
     <title>Chat</title>
@@ -7,6 +7,7 @@
   <body>
     <?php
       include 'header.php';
+      echo'<div class="corps">';
       $db = new PDO("mysql:host=localhost;dbname=projetifd;charset=utf8","root","");
       // check if the id of the friendship and the number of message to display was properly mentionned in the url
       if( !( isset( $_GET['id'] ) && isset( $_GET['num'] ) ) ){
@@ -33,7 +34,7 @@
           $out = $req->fetch();
           $uname = $out['pseudo'];
         }
-        echo('<br/><br/><br/><h1>Discussion avec '.$uname.'</h1>');
+        echo('<div class="titre">Discussion avec '.$uname.'</div>');
 
 
         //get all the messages from thge friendship mentionned
@@ -77,5 +78,6 @@
         echo('<h1>Vous n\'avez pas accès à cette page</h1>');
       }
     ?>
+  </div>
   </body>
 </html>
