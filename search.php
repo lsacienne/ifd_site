@@ -160,6 +160,7 @@
           $nom = $tmp2['nom'];
           $prenom = $tmp2['prenom'];
 
+          echo '<strong>Utilisateur(s)</strong></br>'
           ?>
           <br /><a href="profile.php?id=<?=$tmp2['id']?>"><?=$pseudo?> </a>
           <?php
