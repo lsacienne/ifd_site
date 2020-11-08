@@ -7,7 +7,6 @@
   <body>
     <?php
       include 'header.php';
-
       if(isSet($_POST["recherche"] )){
          $recherche = strtolower($_POST['recherche']);
           $_SESSION['recherche'] = strtolower($_POST['recherche']);
@@ -18,27 +17,24 @@
 
     ?>
     <div class="corps">
-        <h2>Résultats</h2></br>
+        <h2>Résultats</h2>
 
-        <form name="form1" method="post" action="search.php">
+        <form name="form1" method="post" action="test.php">
           <strong>Editeurs</strong></br><input type="radio" name="editeur" value="Mattel" > Mattel</br>
           <input type="radio" name="editeur" value="Edge Entertainment" > Edge Entertainment</br></br>
-
           <strong>Catégories</strong></br><input type="radio" name="categorie" value="Carte" > Carte</br>
           <input type="radio" name="categorie" value="Chance" > Chance</br>
           <input type="radio" name="categorie" value="Humoristique" > Humoristique</br></br>
           <button type="submit">Filtrer</button>
         </form></br>
 
-
-        <form method="post" action="search.php" onChange="submit()">
+        <form method="post" action="test.php" onChange="submit()">
         <label for="tris">Trier par:</label>
         <select name="tris">
         <option <?php if(empty($_POST['tris']) || $_POST['tris'] == "prix") echo "selected";?> value="prix">prix</option>
         <option <?php if(!empty($_POST['tris']) && $_POST['tris'] == "note") echo "selected";?> value="note">note</option>
         </select><br/><br/>
         </form>
-
             <?php
             /***********Filtres******************/
             if(isSet($_POST['editeur'])){
@@ -53,32 +49,32 @@
             /***********Tris*********************/
             if(!empty($_POST['tris'])) $t = $_POST['tris'];
 
-
             /**************Games sorted by price*******************************************/
 
             if(empty($t) || $t == "prix"){
-              $sql = "SELECT jeux.id AS id,picture,nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON
-              categorie.id = link_categorie_jeux.id_categorie  WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie)
-              ORDER BY jeux.prix;";
+              $sql = "SELECT jeux.id AS id,picture,jeux.nom AS nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux
+              ON jeux.id = link_categorie_jeux.id_jeux INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie
+              WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY jeux.prix;";
+
             }
 
 
             /********Games sorted by note**********************/
             if(!empty($t) && $t == "note"){
-              $sql = "SELECT DISTINCT jeux.id AS id,picture,jeux.nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux
+
+              $sql = "SELECT DISTINCT jeux.id AS id,picture,jeux.nom AS nom,prix,editeur,nom_categorie FROM jeux INNER JOIN link_categorie_jeux ON jeux.id = link_categorie_jeux.id_jeux
               INNER JOIN categorie ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN critiques ON critiques.id_jeu = jeux.id
-              WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie) ORDER BY
-              (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id) DESC;";
+              WHERE ('$recherche' = jeux.nom OR '$recherche' = jeux.editeur OR '$recherche' = categorie.nom_categorie)
+              ORDER BY (SELECT AVG(note) FROM critiques WHERE critiques.id_jeu = jeux.id) DESC;";
 
           }
           $jeux = $db->prepare($sql);
           $jeux->execute();
           $line = $jeux->fetch();
 
-
-
         /**************Users query*******************************************/
-        $users = $db->prepare("SELECT id,pseudo,nom,prenom FROM utilisateur WHERE ('$recherche' = utilisateur.pseudo OR '$recherche' = utilisateur.prenom OR '$recherche' = utilisateur.nom);");
+        $users = $db->prepare("SELECT id,pseudo,nom,prenom FROM utilisateur WHERE
+        ('$recherche' = utilisateur.pseudo OR '$recherche' = utilisateur.prenom OR '$recherche' = utilisateur.nom);");
         $users->execute();
         $tmp2 = $users->fetch();
 
@@ -98,8 +94,11 @@
                "C" => $categorieF,
             ];
 
+
             /************Query for getting the game's categories**************/
-            $categories = $db->prepare("SELECT nom_categorie FROM categorie INNER JOIN link_categorie_jeux ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN jeux ON link_categorie_jeux.id_jeux = jeux.id WHERE jeux.nom = '$nom';");
+            $categories = $db->prepare("SELECT nom_categorie FROM categorie INNER JOIN link_categorie_jeux
+            ON categorie.id = link_categorie_jeux.id_categorie INNER JOIN jeux ON link_categorie_jeux.id_jeux = jeux.id
+            WHERE jeux.nom = '$nom';");
             $categories->execute();
             $tmp3= $categories->fetch();
             $categorie = $tmp3['nom_categorie'];
@@ -112,7 +111,8 @@
             }
 
             /*********Query for getting the average note*********************/
-              $avgnote = $db->prepare("SELECT DISTINCT AVG(note) as average FROM critiques INNER JOIN jeux ON critiques.id_jeu = jeux.id WHERE jeux.nom = '$nom';  ");
+              $avgnote = $db->prepare("SELECT DISTINCT AVG(note) as average FROM critiques INNER JOIN jeux
+              ON critiques.id_jeu = jeux.id WHERE jeux.nom = '$nom'; ");
               $avgnote->execute();
               $tmp = $avgnote->fetch();
 
@@ -123,36 +123,31 @@
           }
 
         /***********Displaying the game********************/
-
-        if((!$in)){
-
+          if((!$in)){
             if($filtres['E'] != NULL OR $filtres['C'] != NULL){
               if($filtres['E'] == NULL) $filtres['E'] = $editeur;
               if($filtres['C'] == NULL) $filtres['C'] = $categorie;
+              if(strtolower($filtres['E']) == strtolower($editeur) AND strstr($categorie,$filtres['C']) == TRUE){
+                echo('</br></br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
+                $in = TRUE;
+                echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
+                echo("Par $editeur - $prix euros</br></br>");
+                echo ("$categorie</br>");
+            }
+          }else{
+            echo('</br></br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
+            $in = TRUE;
+            echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
+            echo("Par $editeur - $prix euros</br></br>");
+            echo ("$categorie</br>");
 
-                if(strtolower($filtres['E']) == strtolower($editeur) AND strstr($categorie,$filtres['C']) == TRUE){
-                  $in = TRUE;
-                  echo('</br></br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
-                  echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
-                  echo("Par $editeur - $prix € </br> ");
-                  echo ("$categorie</br>");
+          }
 
-              }
+          }
 
-            } else{
+          $line = $jeux->fetch();
 
-              $in = TRUE;
-              echo('</br></br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
-              echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
-              echo("Par $editeur - $prix € </br> ");
-              echo ("$categorie</br>");
-           }
-
-
-        $line = $jeux->fetch();
-
-
-      }
+        }
 
         /***********Displaying user********************/
 
@@ -168,7 +163,6 @@
           $tmp2 = $users->fetch();
         }
       }
-    }
         ?>
     </div>
   </body>
