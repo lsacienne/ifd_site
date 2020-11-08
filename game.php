@@ -64,7 +64,7 @@
           echo'</div></div>';
         }else{
           //display an error message if the id was wrong
-          echo("<h1>Cette page n'existe pas, sorry bebou</h1>");// to fix
+          echo("<h1>Cette page n'existe pas</h1>");
         }
       }
     ?>

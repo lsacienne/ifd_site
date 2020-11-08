@@ -34,7 +34,7 @@
           $out = $req->fetch();
           $uname = $out['pseudo'];
         }
-        echo('<div class="titre">Discussion avec '.$uname.'</div>');
+        echo('<div id="titre_conversation">Discussion avec '.$uname.'</div><br />');
 
 
         //get all the messages from thge friendship mentionned
@@ -49,8 +49,8 @@
           if($toDisplay != $length){
             echo('
               <form method="post" action="chat.php?id='.$_GET['id'].'&num='.min($_GET['num']+10,$length).'">
-              <button type="submit">Voir 10 messsages précédent</button>
-              </form>
+              <button type="submit" id="submit_corps">Voir 10 messsages précédent</button>
+              </form><br />
             ');
           }
           for($i = $toDisplay-1; $i>=0;$i--){
@@ -69,7 +69,7 @@
         <form method="post" action="send_text.php?id='.$_GET['id'].'&sender='.$sender.'">
           <label for="input">Message:</label>
           <input type="text" name="input" maxlength="255" size="50">
-          <button type="submit"> > </button>
+          <button type="submit" id="submit_corps"> > </button>
         </form>
         ');
 

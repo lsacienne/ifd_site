@@ -49,7 +49,7 @@
               <label for="content">Avis:</label><br />
                 <textarea name="content" cols="40" rows="10"></textarea><br />
 
-                <div class="center"><button type="submit" id="submit_critique">Poster</button></div>
+                <div class="center"><button type="submit" id="submit_corps">Poster</button></div>
             </form>
             <?php
               if(isset($_GET['failed'])){

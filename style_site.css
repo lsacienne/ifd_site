@@ -62,6 +62,10 @@ input[type=text],input[type=password],input[type=email],input[type=date],textare
     font-size:0.8em;
 }
 
+textarea{
+    padding-left:0.4em;
+}
+
 input[type=text]{
     padding-left: 0.4em;
     border: solid black 0.1em;
@@ -390,18 +394,6 @@ button.up_down.down{
     margin-left:2em;
 }
 
-.commentaire button{
-    width:3em;
-    height:1.7em;
-    padding-top:0;
-    font-weight: bolder;
-    font-size:1em;
-    color:white;
-    border: thin dotted whitesmoke;
-    background-color: midnightblue;
-    border-radius:0.6em 0.6em 0.6em 0.6em;
-}
-
 .commentaire input{
     height:1.5em;
 
@@ -534,8 +526,27 @@ address {
     border-top: thin dotted;
 }
 
+/* css du chat */
 
+#titre_conversation{
+    font-weight:bolder;
+    font-size:2em;
 
+}
+
+#submit_corps{
+    padding: 0.1em 1em 0.1em 1em;
+    border-radius:0.6em 0.6em 0.6em 0.6em;
+    background: linear-gradient(55deg,  #d973ff 0, #955cff 25%, #4d42d4 50%, #00299e 90%, #00146f 100%);
+    font-size:0.8em;
+    font-weight:bold;
+    color:white;
+    border:solid black 0.1em;
+}
+
+#submit_corps:hover{
+    background: linear-gradient(55deg, rgba(196,104,230,1) 0%, rgba(125,76,215,1) 25%, rgba(62,53,170,1) 50%, rgba(0,31,120,1) 90%, rgba(0,11,59,1) 100%);
+}
 
 
 /*CSS tiré du site :https://www.pierre-giraud.com/html-css-apprendre-coder-cours/creation-menu-deroulant/ utilisé pour le menu déroulant*/
@@ -626,3 +637,161 @@ li .title{
     border: none;
     background-color: RGBa(200,200,200,0.1);
 }
+
+
+/* Les statistiques du site */
+
+
+.rubrique_graphique{
+    width:20em;
+    margin-top:0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em;
+    border-width:0.4em;
+    border-color:black;
+    border-style:solid;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.titre_graph{
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#max{
+    text-align: center;
+    font-weight: bold;
+}
+
+.background_graph_1{
+    display: table-cell;
+    text-align: center;
+    vertical-align: bottom;
+    background-color: white;
+    width: 20em;
+    height: 20em;
+    border-top: solid black 0.2em;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+    border-bottom-right-radius: 0.5em 0.5em;
+    border-bottom-left-radius: 0.5em 0.5em;
+}
+
+.background_graph_1 .rectangle_stat{
+    background: linear-gradient(55deg,  #d973ff 0, #955cff 25%, #4d42d4 50%, #00299e 90%, #00146f 100%);
+    width:50%;
+    bottom:0;
+    border:solid black 0.1em;
+    text-align: center;
+    margin:auto;
+    color:white;
+    border-top-left-radius: 0.5em 0.5em;
+    border-top-right-radius: 0.5em 0.5em;
+}
+
+.background_graph_1 .rectangle_stat.taille0{height:0%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille1{height:1%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille2{height:2%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille3{height:3%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille4{height:4%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille5{height:5%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille6{height:6%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille7{height:7%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille8{height:8%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille9{height:9%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille10{height:10%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille11{height:11%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille12{height:12%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille13{height:13%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille14{height:14%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille15{height:15%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille16{height:16%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille17{height:17%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille18{height:18%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille19{height:19%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille20{height:20%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille21{height:21%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille22{height:22%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille23{height:23%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille24{height:24%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille25{height:25%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille26{height:26%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille27{height:27%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille28{height:28%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille29{height:29%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille30{height:30%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille31{height:31%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille32{height:32%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille33{height:33%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille34{height:34%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille35{height:35%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille36{height:36%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille37{height:37%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille38{height:38%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille39{height:39%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille40{height:40%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille41{height:41%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille42{height:42%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille43{height:43%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille44{height:44%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille45{height:45%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille46{height:46%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille47{height:47%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille48{height:48%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille49{height:49%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille50{height:50%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille51{height:51%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille52{height:52%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille53{height:53%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille54{height:54%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille55{height:55%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille56{height:56%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille57{height:57%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille58{height:58%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille59{height:59%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille60{height:60%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille61{height:61%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille62{height:62%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille63{height:63%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille64{height:64%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille65{height:65%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille66{height:66%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille67{height:67%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille68{height:68%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille69{height:69%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille70{height:70%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille71{height:71%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille72{height:72%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille73{height:73%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille74{height:74%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille75{height:75%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille76{height:76%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille77{height:77%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille78{height:78%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille79{height:79%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille80{height:80%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille81{height:81%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille82{height:82%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille83{height:83%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille84{height:84%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille85{height:85%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille86{height:86%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille87{height:87%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille88{height:88%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille89{height:89%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille90{height:90%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille91{height:91%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille92{height:92%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille93{height:93%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille94{height:94%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille95{height:95%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille96{height:96%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille97{height:97%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille98{height:98%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille99{height:99%; margin-bottom:0}
+.background_graph_1 .rectangle_stat.taille100{height:100%; margin-bottom:0}

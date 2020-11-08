@@ -83,7 +83,7 @@
                 <form method="post" action="add_comment.php?id=<?php echo($_GET['id'])?>">
                   <label for="input"></label>
                   <input type="text" name="input" maxlength="100" size="80" placeholder="Ecrire un commentaire...">
-                  <button type="submit">></button>
+                  <button type="submit" id="submit_corps">></button>
                 </form>
 
     <?php

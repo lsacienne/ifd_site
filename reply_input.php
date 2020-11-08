@@ -29,7 +29,7 @@
       <div class="commentaire">
           <label for="input">Réponse:</label>
           <input type="text" name="input" maxlength="100" size="50">
-          <button type="submit">Reply</button>
+          <button type="submit" id="submit_corps">Reply</button>
       </div>
   </form>
   </div>
