@@ -118,8 +118,8 @@ input[type=text],input[type=number]{
 /* css pour placer la barre de recherche sur les pages */
 .barre_recherche{
     position:absolute;
-    top:1.5em;
-    left:10em;
+    top:1.2em;
+    left:3.5em;
     font-size:1.4em;
 }
 
@@ -179,11 +179,11 @@ input[type=text],input[type=number]{
 }
 
 .liste_amis a:link{
-    color:darkslategray;
+    color:midnightblue;
 }
 
 .liste_amis a:visited{
-    color:darkslategray;
+    color:midnightblue;
 }
 
 
@@ -417,7 +417,7 @@ button.up_down.down{
 /* le css lié aux pages de jeux */
 
 .page_jeux{
-    margin-left:2em;
+    margin-left:0;
 }
 
 .page_jeux .presentation_generale{
@@ -650,6 +650,11 @@ li .title{
 
 /* Les statistiques du site */
 
+#titre_stats{
+    font-size:2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
 
 .rubrique_graphique{
     width:20em;
@@ -703,6 +708,8 @@ li .title{
     border-top-right-radius: 0.5em 0.5em;
 }
 
+/* Ces classes sont là pour afficher les graphiques convenablement en faisant varier la taille des colonnes. */
+/* Ces lignes ont été générées automatiquement à l'aide du fichier generation_css.c */
 .background_graph_1 .rectangle_stat.taille0{height:0%; margin-bottom:0}
 .background_graph_1 .rectangle_stat.taille1{height:1%; margin-bottom:0}
 .background_graph_1 .rectangle_stat.taille2{height:2%; margin-bottom:0}

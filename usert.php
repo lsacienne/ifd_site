@@ -32,7 +32,7 @@
                     echo " (en attente d'être acceptée)";
                 }else{
                   if($data[$i]['attente'] == false){
-                    echo "</br><a href='chat.php?id=".$data[$i]['ida']."&num=15' >".  $data[$i]['pseudo_1'] . "</a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a></br>";
+                    echo "</br><a href='chat.php?id=".$data[$i]['ida']."&num=15' >".  $data[$i]['pseudo_1'] . "</a> <a href='friend_action.php?action=delete&id=".$data[$i]['ida']." '> Supprimer</a>";
                       $user_check[] = $data[$i]['pseudo_1'];
                   }
                 }

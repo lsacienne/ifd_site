@@ -16,7 +16,7 @@
                 <li><a href="#"><img src="arts/menus/menus_icone.png" width="50"> </a>
                   <ul class="sous">
                     <li><div class="title">Jeux</div></li>
-                    <li><a href="games_display.php">Tout les jeux</a></li>
+                    <li><a href="games_display.php">Tous les jeux</a></li>
                     <li><a href="random.php?content=1">Découvrir un jeu</a></li>
                     <li><a href="#">Rechercher un jeu</a></li>
                     <li><a href="input_game.php">Ajouter un jeu</a></li>
