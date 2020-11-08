@@ -132,17 +132,17 @@
               if($filtres['E'] == NULL) $filtres['E'] = $editeur;
               if($filtres['C'] == NULL) $filtres['C'] = $categorie;
               if(strtolower($filtres['E']) == strtolower($editeur) AND strstr($categorie,$filtres['C']) == TRUE){
-                echo('</br></br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
+                echo('</br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
                 $in = TRUE;
-                echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
-                echo("Par $editeur - $prix euros</br></br>");
+                echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br>');
+                echo("Par $editeur - $prix euros</br>");
                 echo ("$categorie</br>");
             }
           }else{
             echo('</br></br><a href="game.php?id='.$jeux_id.'"><img src="data:image/jpeg;base64, '.base64_encode($picture).'" alt="Image" height="80" width = "80"> </a><br/>');
             $in = TRUE;
-            echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br></br>');
-            echo("Par $editeur - $prix euros</br></br>");
+            echo('<b>'. $nom . '</b>' . ' - ' . round($tmp['average'],1) . '/10' . '</br>');
+            echo("Par $editeur - $prix euros</br>");
             echo ("$categorie</br>");
 
           }
