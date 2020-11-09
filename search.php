@@ -19,7 +19,7 @@
     <div class="corps">
         <h2>Résultats</h2>
 
-        <form name="form1" method="post" action="test.php">
+        <form name="form1" method="post" action="search.php">
           <strong>Editeurs</strong></br><input type="radio" name="editeur" value="Mattel" > Mattel</br>
           <input type="radio" name="editeur" value="Edge Entertainment" > Edge Entertainment</br></br>
           <strong>Catégories</strong></br><input type="radio" name="categorie" value="Carte" > Carte</br>
@@ -28,7 +28,7 @@
           <button type="submit" id="submit_corps">Filtrer</button>
         </form></br>
 
-        <form method="post" action="test.php" onChange="submit()">
+        <form method="post" action="search.php" onChange="submit()">
         <label for="tris">Trier par:</label>
         <select name="tris">
         <option <?php if(empty($_POST['tris']) || $_POST['tris'] == "prix") echo "selected";?> value="prix">prix</option>
