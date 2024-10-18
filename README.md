@@ -14,7 +14,11 @@ Pour y accéder il faut se connecter à draw.io avec son compte github. Il faut 
 - S'inscrire sur le site en cliquant sur le lien
 - Se connecter au site sur la page de login
 
-3. La navigation
+**OU**
+
+- `docker compose up `
+
+1. La navigation
 
 - Naviguer dans le site comme bon vous semble en passant sa souris sur le menu déroulant
 - Utiliser la barre de recherche pour chercher un utilisateur ou un jeu

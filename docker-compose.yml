@@ -1,0 +1,16 @@
+services:
+  utbm:
+    ports:
+      - "8080:80"
+    build: 
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    
+  utbm-mysql:
+    ports:
+      - "3306:3306"
+    build: 
+      context: .
+      dockerfile: ./docker/my_sql/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"

@@ -1,3 +1,5 @@
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';  
+
 CREATE DATABASE projetifd;
 USE projetifd;
 
@@ -9,7 +11,7 @@ CREATE TABLE utilisateur (
   prenom VARCHAR(30),
   bio VARCHAR(5000),
   date_de_naissance DATE,
-  date_de_creation DATE DEFAULT current_timestamp(),
+  date_de_creation DATETIME DEFAULT current_timestamp(),
   email VARCHAR(50)
 );
 
@@ -34,7 +36,7 @@ CREATE TABLE critiques (
   nom VARCHAR(50),
   note INT,
   content VARCHAR(5000),
-  date_crit DATE DEFAULT current_timestamp(),
+  date_crit DATETIME DEFAULT current_timestamp(),
 
   FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id),
   FOREIGN KEY (id_jeu) REFERENCES jeux(id)
